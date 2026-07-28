@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>立夏工程 · 香港冷氣清洗專家</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --primary-dark: #082b3f;
+            --primary-mid: #135a7a;
+            --primary-blue: #1e7ea3;
+            --primary-light: #4da6cc;
+            --primary-pale: #d6ecf7;
+            --primary-bg: #f2f8fc;
+            --white: #ffffff;
+            --gray-100: #f7faff;
+            --gray-200: #eaf1f7;
+            --gray-300: #c8dae6;
+            --text-dark: #0b2838;
+            --text-mid: #2c5368;
+            --text-light: #6a8fa3;
+            --shadow-sm: 0 4px 20px rgba(8, 43, 63, 0.06);
+            --shadow-md: 0 12px 40px rgba(8, 43, 63, 0.10);
+            --shadow-lg: 0 24px 60px rgba(8, 43, 63, 0.14);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* ===== Reset ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+        body {
+            font-family: 'Inter', 'PingFang HK', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+            text-align: center;
+        }
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-dark);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.50);
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--white);
+            transform: translateY(-4px);
+        }
+        .btn-blue {
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: 0 6px 24px rgba(30, 126, 163, 0.30);
+        }
+        .btn-blue:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(8, 43, 63, 0.25);
+        }
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-3px);
+        }
+
+        /* ===== Header ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 0 0;
+            background: rgba(8, 43, 63, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: var(--transition);
+        }
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 76px;
+        }
+
+        /* ----- 新 LOGO 區塊 (取代原 .logo) ----- */
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-shrink: 0;
+        }
+        .logo-block .brand-icon {
+            font-size: 2rem;
+            color: var(--primary-pale);
+            background: rgba(255,255,255,0.06);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .logo-block .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .logo-block .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .logo-block .brand-name i {
+            color: var(--primary-pale);
+            margin-right: 6px;
+        }
+        .logo-block .brand-sub {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.3px;
+        }
+        .logo-block .brand-sub .dot {
+            color: var(--primary-pale);
+            opacity: 0.4;
+        }
+        .logo-block .brand-sub .highlight-tag {
+            background: rgba(255,255,255,0.08);
+            padding: 0 10px;
+            border-radius: 20px;
+            color: var(--primary-pale);
+            font-weight: 500;
+        }
+        /* 右側聯絡小卡片 (header 內) — 閃動 + 超連結 */
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-left: 20px;
+            background: rgba(255,255,255,0.05);
+            padding: 6px 16px 6px 14px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: var(--transition);
+        }
+        .header-contact:hover {
+            background: rgba(255,255,255,0.10);
+            border-color: rgba(255,255,255,0.12);
+        }
+        .header-contact a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .header-contact .whatsapp-icon {
+            color: #25D366;
+            font-size: 1.3rem;
+            animation: pulse-whatsapp 1.8s ease-in-out infinite;
+        }
+        .header-contact .contact-number {
+            color: rgba(255,255,255,0.90);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+        .header-contact a:hover .contact-number {
+            color: var(--white);
+            text-shadow: 0 0 12px rgba(255,255,255,0.2);
+        }
+        .header-contact .service-area {
+            color: rgba(255,255,255,0.40);
+            font-size: 0.7rem;
+            border-left: 1px solid rgba(255,255,255,0.08);
+            padding-left: 12px;
+        }
+        .header-contact .service-area i {
+            margin-right: 4px;
+            color: var(--primary-pale);
+            opacity: 0.5;
+        }
+
+        /* 閃動動畫 */
+        @keyframes pulse-whatsapp {
+            0% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.15); }
+            100% { opacity: 0.7; transform: scale(1); }
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+            margin-left: auto;
+        }
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.70);
+            font-weight: 500;
+            font-size: 0.92rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-pale);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+        .nav-links a:hover {
+            color: var(--white);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 28px;
+            height: 2.5px;
+            background: var(--white);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            position: relative;
+            padding: 170px 0 110px;
+            background: linear-gradient(160deg, #05212f 0%, #0a3a52 45%, #146184 100%);
+            color: var(--white);
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(100, 200, 255, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content .tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(4px);
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.80);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 18px;
+        }
+        .hero-content h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+        .hero-content h1 .highlight {
+            background: linear-gradient(120deg, #b3e0f0, #f0fcff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-content .slogan {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #c2e6f2;
+            margin: 10px 0 16px;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .hero-content .slogan i {
+            font-size: 1.4rem;
+            opacity: 0.5;
+            color: #a0d0e0;
+        }
+        .hero-content .desc {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.82);
+            max-width: 480px;
+            margin-bottom: 34px;
+            line-height: 1.9;
+        }
+        .hero-content .desc i {
+            margin-right: 8px;
+            color: #9fd0e0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-md);
+            padding: 32px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .hero-stats .stat-item {
+            text-align: center;
+            padding: 8px 0;
+        }
+        .hero-stats .stat-item .number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #bce4f0;
+            display: block;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+        .hero-stats .stat-item .label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.65);
+            margin-top: 4px;
+        }
+        .hero-stats .stat-item .label i {
+            margin-right: 6px;
+            font-size: 0.8rem;
+        }
+
+        /* floating icon decoration */
+        .hero-float-icon {
+            position: absolute;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-float-icon.f1 {
+            top: 12%;
+            right: 8%;
+            transform: rotate(15deg);
+        }
+        .hero-float-icon.f2 {
+            bottom: 18%;
+            left: 6%;
+            transform: rotate(-10deg);
+        }
+
+        /* ===== Section Titles ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 52px;
+        }
+        .section-title .sub {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-blue);
+            background: var(--primary-pale);
+            padding: 4px 18px;
+            border-radius: 40px;
+            margin-bottom: 12px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
+        .section-title h2 i {
+            color: var(--primary-blue);
+            margin-right: 10px;
+        }
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-top: 8px;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== Features ===== */
+        .features {
+            padding: 90px 0 80px;
+            background: var(--primary-bg);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 28px;
+        }
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 40px 30px 36px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.60);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-light));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-pale);
+        }
+        .feature-card .icon {
+            font-size: 2.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            display: block;
+            background: var(--primary-bg);
+            width: 72px;
+            height: 72px;
+            line-height: 72px;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            transition: var(--transition);
+        }
+        .feature-card:hover .icon {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: scale(1.04);
+        }
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        .feature-card p {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* ===== Steps (分體式冷氣清洗步驟) ===== */
+        .steps {
+            padding: 90px 0 80px;
+            background: var(--white);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            counter-reset: step-counter;
+            max-width: 1020px;
+            margin: 0 auto;
+        }
+        .steps-grid .step-item:nth-child(5) {
+            grid-column: 2 / 3;
+        }
+        .steps-grid .step-item:nth-child(6) {
+            grid-column: 3 / 4;
+        }
+
+        .step-item {
+            background: var(--primary-bg);
+            border-radius: var(--radius-md);
+            padding: 32px 24px 28px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+        .step-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue);
+        }
+        .step-item .step-number {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            opacity: 0.15;
+            display: block;
+            line-height: 1;
+            margin-bottom: 4px;
+            letter-spacing: -1px;
+        }
+        .step-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+        .step-item p {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        .step-item .step-icon {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* ===== Pricing ===== */
+        .pricing {
+            padding: 90px 0 80px;
+            background: var(--primary-bg);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 40px 32px 44px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .pricing-card.popular {
+            border: 2px solid var(--primary-blue);
+            background: var(--primary-bg);
+            box-shadow: var(--shadow-md);
+        }
+        .pricing-card.popular .badge {
+            position: absolute;
+            top: -14px;
+            right: 20px;
+            background: var(--primary-blue);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 5px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+        .pricing-card .name {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin: 10px 0 2px;
+            letter-spacing: -1px;
+        }
+        .pricing-card .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+        .pricing-card .sub {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+        .pricing-card .discount {
+            background: #e6f3e9;
+            color: #1a6a3a;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .pricing-card .discount i {
+            margin-right: 6px;
+        }
+        .pricing-card .feature-list {
+            margin-top: 20px;
+            text-align: left;
+            padding: 0 8px;
+        }
+        .pricing-card .feature-list li {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pricing-card .feature-list li i {
+            color: var(--primary-blue);
+            width: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        /* 批量優惠特別標示 */
+        .bulk-deal {
+            margin-top: 32px;
+            padding: 24px 32px;
+            background: linear-gradient(135deg, #e6f3e9 0%, #d4e8e0 100%);
+            border-radius: var(--radius-md);
+            border: 2px solid #1a6a3a;
+            text-align: center;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .bulk-deal .bulk-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0d4a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .bulk-deal .bulk-title i {
+            color: #1a6a3a;
+            font-size: 1.5rem;
+        }
+        .bulk-deal .bulk-price {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #0d4a2a;
+            margin: 6px 0 2px;
+        }
+        .bulk-deal .bulk-price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #2a6a4a;
+        }
+        .bulk-deal .bulk-desc {
+            color: #1a5a3a;
+            font-size: 0.95rem;
+        }
+        .bulk-deal .bulk-desc i {
+            color: #1a6a3a;
+            margin-right: 6px;
+        }
+
+        /* ===== Videos ===== */
+        .videos {
+            padding: 90px 0 80px;
+            background: var(--white);
+        }
+        .videos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .video-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.60);
+        }
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .video-card .video-wrap {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #0a1a2a;
+        }
+        .video-card .video-wrap iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .video-card .video-meta {
+            padding: 16px 22px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid var(--gray-200);
+        }
+        .video-card .video-meta i {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+        }
+        .video-card .video-meta span {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+        }
+        .video-card .video-meta small {
+            margin-left: auto;
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        /* ===== Booking (Google Form 預約) ===== */
+        .booking {
+            padding: 90px 0 80px;
+            background: var(--primary-bg);
+        }
+        .booking-wrapper {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+        .booking-wrapper .form-header {
+            background: var(--primary-dark);
+            padding: 24px 32px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .booking-wrapper .form-header i {
+            font-size: 1.8rem;
+            color: var(--primary-pale);
+        }
+        .booking-wrapper .form-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        .booking-wrapper .form-header h3 small {
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            margin-left: 10px;
+        }
+        .booking-wrapper .form-body {
+            padding: 0;
+        }
+        .booking-wrapper .form-body iframe {
+            display: block;
+            width: 100%;
+            height: 640px;
+            border: none;
+            background: var(--white);
+        }
+        .booking-note {
+            text-align: center;
+            margin-top: 18px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .booking-note i {
+            color: var(--primary-blue);
+            margin-right: 6px;
+        }
+
+        /* ===== Payment ===== */
+        .payment {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 16px 32px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            color: var(--text-dark);
+            background: var(--primary-bg);
+            padding: 14px 32px;
+            border-radius: 60px;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        .payment-method:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--primary-blue);
+            background: var(--white);
+        }
+        .payment-method i {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            width: 30px;
+            text-align: center;
+        }
+
+        /* ===== Contact ===== */
+        .contact {
+            padding: 80px 0 90px;
+            background: var(--primary-dark);
+            color: var(--white);
+        }
+        .contact .section-title h2 {
+            color: var(--white);
+        }
+        .contact .section-title h2 i {
+            color: var(--primary-pale);
+        }
+        .contact .section-title p {
+            color: rgba(255, 255, 255, 0.60);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 20px;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: var(--transition);
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.88);
+        }
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .contact-item i {
+            font-size: 1.3rem;
+            color: #b0d8e8;
+            width: 32px;
+            text-align: center;
+        }
+        .contact-item .label {
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.45);
+            margin-right: 4px;
+        }
+        .contact-social {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .social-btn:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.14);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.20);
+        }
+        .social-btn.whatsapp:hover {
+            background: #25D366;
+            border-color: #25D366;
+        }
+        .social-btn.wechat:hover {
+            background: #07C160;
+            border-color: #07C160;
+        }
+        .social-btn i {
+            font-size: 1.2rem;
+        }
+
+        .contact-map {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-md);
+            padding: 32px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 220px;
+        }
+        .contact-map .map-placeholder {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.45);
+        }
+        .contact-map .map-placeholder i {
+            font-size: 3.2rem;
+            color: rgba(255, 255, 255, 0.12);
+            display: block;
+            margin-bottom: 12px;
+        }
+        .contact-map .map-placeholder .addr {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.80);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #041a26;
+            padding: 32px 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .footer a {
+            color: rgba(255, 255, 255, 0.50);
+            transition: var(--transition);
+        }
+        .footer a:hover {
+            color: var(--white);
+        }
+        .footer .heart {
+            color: #e8707a;
+        }
+
+        /* ===== Scroll reveal (Intersection Observer) ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.94);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 44px;
+                text-align: center;
+            }
+            .hero-content .desc {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-stats {
+                max-width: 480px;
+                margin: 0 auto;
+            }
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
+            }
+            .steps-grid .step-item:nth-child(5) {
+                grid-column: auto;
+            }
+            .steps-grid .step-item:nth-child(6) {
+                grid-column: auto;
+            }
+            .header .container {
+                flex-wrap: wrap;
+                height: auto;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                gap: 10px;
+            }
+            .logo-block {
+                flex: 1 1 auto;
+            }
+            .header-contact {
+                margin-left: 0;
+                padding: 6px 12px;
+            }
+            .header-contact .service-area {
+                display: none;
+            }
+            .nav-links {
+                margin-left: 0;
+                width: 100%;
+                justify-content: flex-end;
+            }
+            .booking-wrapper .form-body iframe {
+                height: 560px;
+            }
+            .bulk-deal {
+                padding: 20px 24px;
+                max-width: 100%;
+            }
+            .bulk-deal .bulk-price {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .nav-links {
+                position: fixed;
+                top: 76px;
+                left: 0;
+                right: 0;
+                background: rgba(8, 43, 63, 0.97);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 32px 28px 40px;
+                gap: 20px;
+                transform: translateY(-120%);
+                transition: var(--transition);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+                box-shadow: 0 24px 48px rgba(0, 0, 0, 0.30);
+                justify-content: center;
+                align-items: center;
+            }
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            .nav-toggle {
+                display: flex;
+            }
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+            .hero-content .slogan {
+                font-size: 1.6rem;
+                justify-content: center;
+            }
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+                padding: 24px 18px;
+            }
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+                max-width: 500px;
+            }
+            .steps-grid .step-item:nth-child(5) {
+                grid-column: auto;
+            }
+            .steps-grid .step-item:nth-child(6) {
+                grid-column: auto;
+            }
+            .header .container {
+                flex-wrap: nowrap;
+                height: 76px;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .logo-block .brand-sub .highlight-tag {
+                display: none;
+            }
+            .header-contact {
+                padding: 4px 10px;
+            }
+            .header-contact .contact-number {
+                font-size: 0.8rem;
+            }
+            .header-contact .whatsapp-icon {
+                font-size: 1.1rem;
+            }
+            .booking-wrapper .form-body iframe {
+                height: 520px;
+            }
+            .booking-wrapper .form-header {
+                padding: 16px 20px;
+                flex-wrap: wrap;
+            }
+            .booking-wrapper .form-header h3 {
+                font-size: 1.1rem;
+            }
+            .booking-wrapper .form-header h3 small {
+                display: block;
+                margin-left: 0;
+                margin-top: 4px;
+            }
+            .bulk-deal {
+                padding: 16px 20px;
+            }
+            .bulk-deal .bulk-title {
+                font-size: 1rem;
+            }
+            .bulk-deal .bulk-price {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 18px;
+            }
+            .hero {
+                padding: 140px 0 70px;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content .slogan {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+                gap: 8px;
+            }
+            .hero-content .slogan i {
+                font-size: 1rem;
+            }
+            .hero-stats .stat-item .number {
+                font-size: 1.8rem;
+            }
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            .pricing-card .price {
+                font-size: 2.4rem;
+            }
+            .payment-methods {
+                gap: 12px;
+            }
+            .payment-method {
+                padding: 12px 22px;
+                font-size: 0.9rem;
+            }
+            .social-btn {
+                padding: 12px 20px;
+                font-size: 0.85rem;
+            }
+            .contact-item {
+                font-size: 0.9rem;
+                padding: 12px 14px;
+            }
+            .btn {
+                padding: 14px 28px;
+                font-size: 0.9rem;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+            }
+            .steps-grid .step-item:nth-child(5) {
+                grid-column: auto;
+            }
+            .steps-grid .step-item:nth-child(6) {
+                grid-column: auto;
+            }
+            .logo-block .brand-name {
+                font-size: 1.1rem;
+            }
+            .logo-block .brand-sub {
+                font-size: 0.55rem;
+                flex-wrap: wrap;
+            }
+            .header-contact .contact-number {
+                font-size: 0.7rem;
+            }
+            .header-contact .whatsapp-icon {
+                font-size: 1rem;
+            }
+            .header-contact .service-area {
+                display: none;
+            }
+            .booking-wrapper .form-body iframe {
+                height: 480px;
+            }
+            .booking-wrapper .form-header {
+                padding: 14px 16px;
+            }
+            .booking-wrapper .form-header h3 {
+                font-size: 1rem;
+            }
+            .booking-wrapper .form-header i {
+                font-size: 1.4rem;
+            }
+            .bulk-deal {
+                padding: 14px 16px;
+            }
+            .bulk-deal .bulk-title {
+                font-size: 0.9rem;
+                flex-wrap: wrap;
+            }
+            .bulk-deal .bulk-price {
+                font-size: 1.5rem;
+            }
+            .bulk-deal .bulk-desc {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <div class="container">
+            <!-- 新 Logo 區塊 (取代原 .logo) -->
+            <div class="logo-block">
+                <div class="brand-icon">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">
+                        </i> 立夏工程
+                    </span>
+                    <span class="brand-sub">
+                        <span>對自己呼吸負責</span>
+                        <span class="dot">•</span>
+                        <span class="highlight-tag">季季洗</span>
+                        <span class="highlight-tag" style="background:rgba(255,255,255,0.04);">年年洗</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- 聯絡資訊 (WhatsApp 圖標 + 號碼) — 超連結 + 閃動 -->
+            <div class="header-contact">
+                <a href="https://wa.me/85266233339?text=你好，我想查詢冷氣清洗服務" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i>
+                    <span class="contact-number">6623 3339</span>
+                </a>
+                <span class="service-area">
+                    <i class="fas fa-map-pin"></i> 元朗 · 天水圍 · 屯門
+                </span>
+            </div>
+
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#features">服務</a></li>
+                    <li><a href="#steps">清洗步驟</a></li>
+                    <li><a href="#pricing">價格</a></li>
+                    <li><a href="#videos">影片</a></li>
+                    <li><a href="#booking">預約</a></li>
+                    <li><a href="#payment">付款</a></li>
+                    <li><a href="#contact">聯絡</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="選單">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-float-icon f1"><i class="fas fa-snowflake"></i></div>
+        <div class="hero-float-icon f2"><i class="fas fa-wind"></i></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="tag"><i class="fas fa-shield-alt" style="margin-right:6px;"></i> 專業師傅 · 十年經驗</div>
+                <h1>
+                    立夏  冷氣清洗 <br />
+                    <span class="highlight">慢慢洗 · 細心洗</span>
+                </h1>
+                <div class="slogan">
+                    <i class="fas fa-droplet"></i>
+                    慢工出細貨 只要您唔趕時間
+                    <i class="fas fa-droplet"></i>
+                </div>
+                <p class="desc">
+                    <i class="fas fa-check-circle"></i> 高壓深層清洗
+                    <i class="fas fa-check-circle" style="margin-left:18px;"></i> 防霉殺菌處理<br />
+                    用心對待每一部冷氣 還您清新涼爽有覺好訓
+                </p>
+                <div class="hero-buttons">
+                    <a href="#pricing" class="btn btn-primary">
+                        <i class="fas fa-tag"></i> 查詢價格
+                    </a>
+                    <a href="#booking" class="btn btn-outline">
+                        <i class="fas fa-calendar-check"></i> 立即預約
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="number">600+</span>
+                    <span class="label"><i class="fas fa-wind"></i> 冷氣清洗</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">98%</span>
+                    <span class="label"><i class="fas fa-star"></i> 香港客戶滿意</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">4.9</span>
+                    <span class="label"><i class="fas fa-thumbs-up"></i> 口碑評分</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">10+</span>
+                    <span class="label"><i class="fas fa-calendar-alt"></i> 年經驗</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub"><i class="fas fa-tools"></i> 我們的承諾</span>
+                <h2><i class="fas fa-hand-sparkles"></i> 立夏工程清洗 · 專業保證</h2>
+                <p>每一步都細心到位，讓冷氣煥然一新</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal" style="transition-delay:0.05s;">
+                    <span class="icon"><i class="fas fa-water"></i></span>
+                    <h3>高壓水槍清洗</h3>
+                    <p>專業高壓水槍深入冷氣內部，徹底沖走塵垢、霉菌及異味，還原強勁製冷。</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay:0.10s;">
+                    <span class="icon"><i class="fas fa-fire"></i></span>
+                    <h3>高溫消毒殺菌</h3>
+                    <p>清洗後以高溫蒸汽消毒，有效殺滅 99.9% 細菌及病毒，守護家人健康。</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay:0.15s;">
+                    <span class="icon"><i class="fas fa-hand-sparkles"></i></span>
+                    <h3>慢慢洗 · 細心洗</h3>
+                    <p>不趕工、不馬虎，每一部冷氣都細心拆洗，確保每個部件潔淨如新。</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay:0.20s;">
+                    <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                    <h3>15天洗後保障</h3>
+                    <p>信心之選，15天同一問題滴水保障，服務有質素。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STEPS (分體式冷氣清洗步驟) ===== -->
+    <section class="steps" id="steps">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub"><i class="fas fa-list-ol"></i> 標準流程</span>
+                <h2><i class="fas fa-sync-alt"></i> 分體式冷氣清洗步驟</h2>
+                <p>每一個細節都按部就班，確保乾淨徹底</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-item reveal" style="transition-delay:0.05s;">
+                    <span class="step-number">01</span>
+                    <span class="step-icon"><i class="fas fa-user-cog"></i></span>
+                    <h4>上門檢查 &amp; 保護</h4>
+                    <p>師傅上門先檢查冷氣狀況，鋪設保護墊，確保施工環境整潔。</p>
+                </div>
+                <div class="step-item reveal" style="transition-delay:0.10s;">
+                    <span class="step-number">02</span>
+                    <span class="step-icon"><i class="fas fa-screwdriver"></i></span>
+                    <h4>拆機 &amp; 部件分類</h4>
+                    <p>小心拆卸面蓋、隔塵網、水盤及風輪，並將部件有序擺放。</p>
+                </div>
+                <div class="step-item reveal" style="transition-delay:0.15s;">
+                    <span class="step-number">03</span>
+                    <span class="step-icon"><i class="fas fa-water"></i></span>
+                    <h4>高壓水槍深層清洗</h4>
+                    <p>使用高壓水槍配合環保清潔劑，徹底沖洗鋁片、風輪及水盤。</p>
+                </div>
+                <div class="step-item reveal" style="transition-delay:0.20s;">
+                    <span class="step-number">04</span>
+                    <span class="step-icon"><i class="fas fa-fire"></i></span>
+                    <h4>高溫蒸汽消毒</h4>
+                    <p>以 120°C 高溫蒸汽殺滅細菌、霉菌，同時去除異味。</p>
+                </div>
+                <div class="step-item reveal" style="transition-delay:0.25s;">
+                    <span class="step-number">05</span>
+                    <span class="step-icon"><i class="fas fa-check-double"></i></span>
+                    <h4>組裝 &amp; 功能測試</h4>
+                    <p>將所有部件重新安裝，測試製冷、送風及排水，確保運作正常。</p>
+                </div>
+                <div class="step-item reveal" style="transition-delay:0.30s;">
+                    <span class="step-number">06</span>
+                    <span class="step-icon"><i class="fas fa-broom"></i></span>
+                    <h4>現場清潔 &amp; 驗收</h4>
+                    <p>清理施工區域，與客戶一同驗收，講解日常保養要點。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub"><i class="fas fa-coins"></i> 透明收費</span>
+                <h2><i class="fas fa-tag"></i> 清洗價格</h2>
+                <p>絕無隱藏費用，明碼實價</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card popular reveal" style="transition-delay:0.05s;">
+                    <span class="badge">最多選用</span>
+                    <div class="name">標準清洗</div>
+                    <div class="price">$600 <small>/ 部</small></div>
+                    <div class="sub">高壓水槍 + 高溫消毒</div>
+                    <div class="discount"><i class="fas fa-gift"></i> 第二部起 每部減 $50</div>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> 適用於一般家用分體式</li>
+                        <li><i class="fas fa-check-circle"></i> 基本拆洗 + 外殼清潔</li>
+                        <li><i class="fas fa-check-circle"></i> 製冷效能檢測</li>
+                    </ul>
+                </div>
+                <div class="pricing-card reveal" style="transition-delay:0.10s;">
+                    <div class="name">滴水清洗</div>
+                    <div class="price">$750 <small>/ 部</small></div>
+                    <div class="sub">深層清潔 + 防滴水處理</div>
+                    <div class="discount"><i class="fas fa-gift"></i> 第二部起 每部減 $50</div>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> 適合滴水嚴重、需要特別處理</li>
+                        <li><i class="fas fa-check-circle"></i> 排水管疏通 + 防漏測試</li>
+                        <li><i class="fas fa-check-circle"></i> 額外消毒殺菌</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 批量優惠：同一屋苑齊洗 10部以上 $450/部 -->
+            <div class="bulk-deal reveal" style="transition-delay:0.15s;">
+                <div class="bulk-title">
+                    <i class="fas fa-building"></i>
+                    同一屋苑 · 齊洗優惠
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="bulk-price">$450 <small>/ 部</small></div>
+                <div class="bulk-desc">
+                    <i class="fas fa-check-circle"></i> 10 部或以上，同一屋苑集體預約
+                </div>
+                <div style="margin-top:8px; font-size:0.8rem; color:#1a5a3a; opacity:0.7;">
+                    <i class="fas fa-clock"></i> 歡迎鄰居夾單，彈性安排時間
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:28px; color:var(--text-light); font-size:0.9rem;">
+                <i class="fas fa-info-circle" style="color:var(--primary-blue);"></i>
+                實際報價以師傅上門評估為準，歡迎查詢。
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEOS ===== -->
+    <section class="videos" id="videos">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub"><i class="fab fa-youtube"></i> 清洗實況</span>
+                <h2><i class="fas fa-play-circle"></i> 睇下我哋點樣用心洗</h2>
+                <p>真實記錄，每一個細節都睇得見</p>
+            </div>
+            <div class="videos-grid">
+                <div class="video-card reveal" style="transition-delay:0.05s;">
+                    <div class="video-wrap">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-meta">
+                        <i class="fas fa-play-circle"></i>
+                        <span>立夏工程｜高壓水槍清洗全過程</span>
+                        <small>2:30</small>
+                    </div>
+                </div>
+                <div class="video-card reveal" style="transition-delay:0.10s;">
+                    <div class="video-wrap">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-meta">
+                        <i class="fas fa-play-circle"></i>
+                        <span>立夏工程｜高溫消毒 + 客戶分享</span>
+                        <small>3:15</small>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:20px; color:var(--text-light); font-size:0.9rem;">
+                <i class="fas fa-arrow-right" style="color:var(--primary-blue);"></i>
+                點擊影片觀看更多清洗細節
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BOOKING (Google Form 預約) ===== -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub"><i class="fas fa-calendar-plus"></i> 線上預約</span>
+                <h2><i class="fas fa-clock"></i> 即時預約洗冷氣</h2>
+                <p>填寫以下表格，我哋會盡快聯絡您確認</p>
+            </div>
+            <div class="booking-wrapper reveal">
+                <div class="form-header">
+                    <i class="fas fa-snowflake"></i>
+                    <h3>
+                        立夏工程 · 冷氣清洗預約
+                        <small>留低 姓名 · 電話 · 地址 · 清洗日期 ·專人回覆</small>
+                    </h3>
+                </div>
+                <div class="form-body">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfJQxR6N8Tz7cLk4WpM1h2vGq9y5oD3xU8aBc7dEfGhIjKlMnOpQrStUvWxYz/viewform?embedded=true" 
+                            allowfullscreen 
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            <div class="booking-note">
+                <i class="fas fa-lock"></i> 資料只用作預約安排，絕不轉交第三方
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PAYMENT ===== -->
+    <section class="payment" id="payment">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub"><i class="fas fa-credit-card"></i> 方便快捷</span>
+                <h2><i class="fas fa-wallet"></i> 付款方式</h2>
+                <p>多種便捷支付，輕鬆過數</p>
+            </div>
+            <div class="payment-methods">
+                <div class="payment-method"><i class="fas fa-money-bill-wave"></i> 現金</div>
+                <div class="payment-method"><i class="fas fa-mobile-alt"></i> PayMe</div>
+                <div class="payment-method"><i class="fab fa-alipay"></i> Alipay</div>
+                <div class="payment-method"><i class="fas fa-exchange-alt"></i> 轉數快</div>
+            </div>
+            <div style="text-align:center; margin-top:20px; color:var(--text-light); font-size:0.9rem;">
+                <i class="fas fa-shield-alt" style="color:var(--primary-blue);"></i>
+                所有付款方式均安全可靠，完成後可提供收據。
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub" style="background:rgba(255,255,255,0.08); color:var(--primary-pale);"><i class="fas fa-address-card"></i> 聯繫我們</span>
+                <h2><i class="fas fa-phone-alt"></i> 聯絡立夏工程</h2>
+                <p style="color:rgba(255,255,255,0.55);">隨時為您服務，歡迎查詢或預約</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-pin"></i>
+                        <span><span class="label">地址：</span>香港元朗朗益廣場</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span><span class="label">電話：</span><a href="tel:+85266233339" style="color:inherit;">+852 6623 3339</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span><span class="label">服務地區：</span>元朗 · 天水圍 · 屯門</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span><span class="label">營業時間：</span>星期一至六 09:00 – 20:00</span>
+                    </div>
+
+                    <div class="contact-social">
+                        <a href="https://wa.me/85266233339?text=你好，我想查詢冷氣清洗服務" target="_blank" class="social-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="#" target="_blank" class="social-btn wechat">
+                            <i class="fab fa-weixin"></i> WeChat
+                        </a>
+                    </div>
+                    <div style="margin-top:6px; font-size:0.85rem; color:rgba(255,255,255,0.35);">
+                        <i class="fas fa-clock" style="margin-right:4px;"></i> 回覆時間：一般 30 分鐘內
+                    </div>
+                </div>
+
+                <div class="contact-map">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <div class="addr">📍 香港元朗朗益廣場</div>
+                        <p style="margin-top:10px; font-size:0.9rem; color:rgba(255,255,255,0.35);">
+                            <i class="fas fa-train"></i> 元朗港鐵站步行 10 分鐘
+                        </p>
+                        <div style="margin-top:18px; border-radius:12px; background:rgba(255,255,255,0.04); padding:14px; font-size:0.85rem; color:rgba(255,255,255,0.30);">
+                            <i class="fas fa-map-pin" style="color:rgba(255,255,255,0.20);"></i>
+                            歡迎 whatsapp 預約報價
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                © 2016 <strong>立夏工程</strong> · 香港冷氣慢洗專家 ·
+                <a href="#home"><i class="fas fa-snowflake"></i> 慢慢洗 · 細心洗</a>
+                <span style="margin:0 8px;">|</span>
+                <span class="heart"><i class="fas fa-heart"></i></span> 用心服務每一位顧客 
+            </p>
+            <p style="margin-top:6px; font-size:0.75rem; opacity:0.4;">
+                <i class="fas fa-shield-alt"></i> 元天屯 · 十年信譽
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Header shadow on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.style.boxShadow = window.scrollY > 40 ? '0 4px 30px rgba(0,0,0,0.20)' : 'none';
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const offset = target.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Intersection Observer — reveal animations
+        const revealElements = document.querySelectorAll('.reveal, .reveal-scale');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+        revealElements.forEach(el => observer.observe(el));
+
+        console.log('❄️ 立夏工程｜慢慢洗 · 細心洗');
+    </script>
+</body>
+</html>
