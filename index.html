@@ -48,6 +48,7 @@
             background: var(--white);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         a {
             text-decoration: none;
@@ -1271,6 +1272,66 @@
             transform: scale(1);
         }
 
+        /* ===== WIND BREEZE EFFECT (涼快風吹效果) ===== */
+        .breeze-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+        .breeze-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(200, 240, 255, 0.25), rgba(255, 255, 255, 0));
+            border-radius: 100%;
+            filter: blur(1px);
+            animation: breeze-flow 8s linear infinite;
+        }
+        .breeze-line:nth-child(1) { top: 10%; animation-duration: 7s; animation-delay: 0s; width: 80%; left: -10%; }
+        .breeze-line:nth-child(2) { top: 25%; animation-duration: 9s; animation-delay: 1.2s; width: 90%; left: -20%; }
+        .breeze-line:nth-child(3) { top: 45%; animation-duration: 6.5s; animation-delay: 0.5s; width: 70%; left: -5%; }
+        .breeze-line:nth-child(4) { top: 60%; animation-duration: 8.5s; animation-delay: 2.5s; width: 85%; left: -30%; }
+        .breeze-line:nth-child(5) { top: 78%; animation-duration: 7.5s; animation-delay: 1.8s; width: 75%; left: -15%; }
+        .breeze-line:nth-child(6) { top: 92%; animation-duration: 10s; animation-delay: 0.2s; width: 95%; left: -25%; }
+        .breeze-line:nth-child(7) { top: 35%; animation-duration: 8s; animation-delay: 3s; width: 60%; left: 10%; }
+        .breeze-line:nth-child(8) { top: 55%; animation-duration: 7.2s; animation-delay: 0.9s; width: 80%; left: -40%; }
+
+        @keyframes breeze-flow {
+            0% { transform: translateX(-100%) scaleX(0.6); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(120%) scaleX(1.2); opacity: 0; }
+        }
+
+        /* 雪花飄落 (涼爽氣氛) */
+        .snowfall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            overflow: hidden;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.8rem;
+            animation: snow-fall linear infinite;
+        }
+        @keyframes snow-fall {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0.4; }
+            100% { transform: translateY(105vh) rotate(720deg) scale(1.2); opacity: 0.1; }
+        }
+
         /* ===== Responsive ===== */
         @media (max-width: 1024px) {
             .hero .container {
@@ -1536,6 +1597,21 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== 風吹效果：涼快感 ===== -->
+    <div class="breeze-container" aria-hidden="true">
+        <div class="breeze-line"></div>
+        <div class="breeze-line"></div>
+        <div class="breeze-line"></div>
+        <div class="breeze-line"></div>
+        <div class="breeze-line"></div>
+        <div class="breeze-line"></div>
+        <div class="breeze-line"></div>
+        <div class="breeze-line"></div>
+    </div>
+
+    <!-- ===== 雪花飄落：清涼氣氛 ===== -->
+    <div class="snowfall" id="snowfall" aria-hidden="true"></div>
 
     <!-- ===== HEADER ===== -->
     <header class="header" id="header">
@@ -1992,6 +2068,23 @@
                 btn.style.setProperty('--my', y + '%');
             });
         });
+
+        // ===== 雪花飄落效果 (涼爽氣氛) =====
+        (function createSnowflakes() {
+            const container = document.getElementById('snowfall');
+            const flakes = ['❄', '❅', '❆', '✦', '•'];
+            for (let i = 0; i < 35; i++) {
+                const el = document.createElement('div');
+                el.className = 'snowflake';
+                el.textContent = flakes[Math.floor(Math.random() * flakes.length)];
+                el.style.left = Math.random() * 100 + '%';
+                el.style.fontSize = (0.5 + Math.random() * 1.2) + 'rem';
+                el.style.animationDuration = (8 + Math.random() * 18) + 's';
+                el.style.animationDelay = (Math.random() * 15) + 's';
+                el.style.opacity = 0.15 + Math.random() * 0.25;
+                container.appendChild(el);
+            }
+        })();
 
         console.log('❄️ 立夏工程｜慢慢洗 · 細心洗');
     </script>
