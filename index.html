@@ -74,7 +74,8 @@
             --radius-md: 20px;
             --radius-lg: 28px;
             --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            --lang-text: "zh";
+            --whatsapp-green: #25D366;
+            --whatsapp-bubble: #dcf8c6;
         }
 
         /* ============================================================
@@ -170,14 +171,15 @@
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 12px 36px rgba(8, 43, 63, 0.25);
         }
-        .btn-ghost {
-            background: rgba(255, 255, 255, 0.08);
+        .btn-whatsapp {
+            background: var(--whatsapp-green);
             color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.30);
         }
-        .btn-ghost:hover {
-            background: rgba(255, 255, 255, 0.18);
-            transform: translateY(-3px);
+        .btn-whatsapp:hover {
+            background: #1da85a;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 36px rgba(37, 211, 102, 0.35);
         }
         .btn-back-top {
             position: fixed;
@@ -213,7 +215,7 @@
             bottom: 28px;
             right: 24px;
             z-index: 998;
-            background: #25D366;
+            background: var(--whatsapp-green);
             color: var(--white);
             width: 60px;
             height: 60px;
@@ -335,7 +337,6 @@
             }
         }
 
-        /* ---- 語言切換器 ---- */
         .lang-switcher {
             display: flex;
             gap: 4px;
@@ -385,7 +386,7 @@
             gap: 8px;
         }
         .header-contact .whatsapp-icon {
-            color: #25D366;
+            color: var(--whatsapp-green);
             font-size: 1.2rem;
             animation: pulse-whatsapp 1.8s ease-in-out infinite;
         }
@@ -1023,7 +1024,7 @@
         }
 
         /* ============================================================
-               10. VIDEOS (Lazy Load)
+               10. VIDEOS
                ============================================================ */
         .videos {
             padding: 70px 0 60px;
@@ -1090,7 +1091,7 @@
         }
 
         /* ============================================================
-               11. BOOKING (Google Form 自動適應高度)
+               11. BOOKING
                ============================================================ */
         .booking {
             padding: 70px 0 60px;
@@ -1135,15 +1136,14 @@
         }
         .booking-wrapper .form-body {
             padding: 0;
-            position: relative;
         }
         .booking-wrapper .form-body iframe {
             display: block;
             width: 100%;
-            height: 0;
+            min-height: 600px;
+            height: auto;
             border: none;
             background: var(--white);
-            transition: height 0.3s ease;
         }
         .booking-note {
             text-align: center;
@@ -1157,7 +1157,7 @@
         }
 
         /* ============================================================
-               12. PAYMENT + QR CODE 彈窗
+               12. PAYMENT + QR CODE
                ============================================================ */
         .payment {
             padding: 60px 0 50px;
@@ -1203,7 +1203,6 @@
             transform: scale(1.12) rotate(4deg);
         }
 
-        /* ---- QR Code Modal ---- */
         .qr-modal {
             display: none;
             position: fixed;
@@ -1281,6 +1280,7 @@
             border: 2px dashed var(--gray-200);
             font-size: 3rem;
             color: var(--text-light);
+            overflow: hidden;
         }
         .qr-modal .qr-code img {
             width: 100%;
@@ -1434,7 +1434,158 @@
         }
 
         /* ============================================================
-               14. CONTACT
+               14. WHATSAPP 客戶反饋區
+               ============================================================ */
+        .whatsapp-feedback {
+            padding: 70px 0 60px;
+            background: var(--white);
+        }
+        .whatsapp-feedback .section-title .sub {
+            background: #e8f5e9;
+            color: var(--whatsapp-green);
+        }
+        .whatsapp-feedback .section-title .sub i {
+            color: var(--whatsapp-green);
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feedback-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 24px 26px 22px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            position: relative;
+        }
+        .feedback-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: var(--shadow-md);
+            border-color: var(--whatsapp-green);
+        }
+        .feedback-card .fb-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+        .feedback-card .fb-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--whatsapp-green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .feedback-card .fb-user {
+            flex: 1;
+        }
+        .feedback-card .fb-user .name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        .feedback-card .fb-user .time {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .feedback-card .fb-user .time i {
+            font-size: 0.65rem;
+        }
+        .feedback-card .fb-stars {
+            color: #f5b342;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-left: auto;
+        }
+        .feedback-card .fb-bubble {
+            background: var(--whatsapp-bubble);
+            border-radius: 12px 12px 12px 4px;
+            padding: 14px 18px;
+            margin-top: 4px;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        .feedback-card .fb-bubble::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            border-style: solid;
+            border-width: 0 8px 8px 0;
+            border-color: transparent var(--whatsapp-bubble) transparent transparent;
+        }
+        .feedback-card .fb-bubble p {
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin: 0;
+        }
+        .feedback-card .fb-bubble .fb-emoji {
+            font-size: 1.2rem;
+            margin-right: 4px;
+        }
+        .feedback-card .fb-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 10px;
+            background: #e8f5e9;
+            color: var(--whatsapp-green);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(37, 211, 102, 0.15);
+        }
+        .feedback-card .fb-badge i {
+            font-size: 0.7rem;
+        }
+
+        .feedback-cta {
+            text-align: center;
+            margin-top: 32px;
+        }
+        .feedback-cta .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--whatsapp-green);
+            color: var(--white);
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.30);
+        }
+        .feedback-cta .btn-whatsapp:hover {
+            background: #1da85a;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 36px rgba(37, 211, 102, 0.40);
+        }
+        .feedback-cta .btn-whatsapp i {
+            font-size: 1.3rem;
+        }
+
+        /* ============================================================
+               15. CONTACT
                ============================================================ */
         .contact {
             padding: 60px 0 70px;
@@ -1518,8 +1669,8 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.20);
         }
         .social-btn.whatsapp:hover {
-            background: #25D366;
-            border-color: #25D366;
+            background: var(--whatsapp-green);
+            border-color: var(--whatsapp-green);
             box-shadow: 0 8px 30px rgba(37, 211, 102, 0.25);
         }
         .social-btn.wechat:hover {
@@ -1568,7 +1719,7 @@
         }
 
         /* ============================================================
-               15. FOOTER
+               16. FOOTER
                ============================================================ */
         .footer {
             background: #041a26;
@@ -1601,7 +1752,7 @@
         }
 
         /* ============================================================
-               16. REVEAL
+               17. REVEAL
                ============================================================ */
         .reveal {
             opacity: 0;
@@ -1614,7 +1765,7 @@
         }
 
         /* ============================================================
-               17. BREEZE + SNOWFALL
+               18. BREEZE + SNOWFALL
                ============================================================ */
         .breeze-container {
             position: fixed;
@@ -1738,7 +1889,7 @@
         }
 
         /* ============================================================
-               18. RESPONSIVE
+               19. RESPONSIVE
                ============================================================ */
         @media (max-width: 1024px) {
             .hero .container {
@@ -1788,6 +1939,10 @@
             .lang-switcher button {
                 font-size: 0.6rem;
                 padding: 3px 8px;
+            }
+            .feedback-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
             }
         }
 
@@ -1900,6 +2055,14 @@
                 width: 160px;
                 height: 160px;
                 font-size: 2.4rem;
+            }
+            .feedback-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                margin: 0 auto;
+            }
+            .feedback-card {
+                padding: 20px 20px 18px;
             }
         }
 
@@ -2043,6 +2206,20 @@
                 gap: 2px;
                 padding: 2px 4px;
             }
+            .feedback-grid {
+                max-width: 100%;
+            }
+            .feedback-card .fb-header {
+                flex-wrap: wrap;
+            }
+            .feedback-card .fb-stars {
+                margin-left: 0;
+                width: 100%;
+            }
+            .feedback-cta .btn-whatsapp {
+                padding: 12px 24px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -2071,12 +2248,11 @@
                 <div class="brand-text">
                     <span class="brand-name">立夏工程</span>
                     <span class="brand-sub">
-                        <span class="highlight-tag"><i class="fas fa-star"></i> 慢洗冷氣專家</span>
+                        <span class="highlight-tag"><i class="fas fa-star"></i> <span data-key="brand_tag">慢洗冷氣專家</span></span>
                     </span>
                 </div>
             </div>
 
-            <!-- 語言切換器 -->
             <div class="lang-switcher" id="langSwitcher">
                 <button class="active" data-lang="zh-hk">繁</button>
                 <button data-lang="zh-cn">简</button>
@@ -2089,7 +2265,7 @@
                     <span class="contact-number">6623 3339</span>
                 </a>
                 <span class="service-area">
-                    <i class="fas fa-map-pin"></i> 元朗 · 天水圍 · 屯門
+                    <i class="fas fa-map-pin"></i> <span data-key="service_area">元朗 · 天水圍 · 屯門</span>
                 </span>
             </div>
 
@@ -2116,7 +2292,7 @@
         <div class="hero-float-icon f2"><i class="fas fa-wind"></i></div>
         <div class="container">
             <div class="hero-content">
-                <div class="tag" data-key="hero_tag"><i class="fas fa-shield-alt" style="margin-right:6px;"></i> 專業師傅 · 十年經驗</div>
+                <div class="tag"><i class="fas fa-shield-alt" style="margin-right:6px;"></i> <span data-key="hero_tag">專業師傅 · 十年經驗</span></div>
                 <h1>
                     <span data-key="hero_title1">立夏 冷氣清洗</span><br />
                     <span class="highlight" data-key="hero_title2">慢慢洗 · 細心洗</span>
@@ -2133,7 +2309,7 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#pricing" class="btn btn-primary" data-key="hero_btn1"><i class="fas fa-tag"></i> 查詢價格</a>
-                    <a href="#booking" class="btn btn-outline" data-key="hero_btn2"><i class="fas fa-calendar-check"></i> 立即預約</a>
+                    <a href="#booking" class="btn btn-outline" data-key="hero_btn2"><i class="fas fa-calendar-check"></i> 立即預約 </a>
                 </div>
             </div>
             <div class="hero-stats">
@@ -2394,21 +2570,18 @@
             </div>
             <div class="reviews-carousel reveal">
                 <div class="reviews-track" id="reviewsTrack">
-                    <!-- Slide 1 -->
                     <div class="review-slide">
                         <div class="avatar"><i class="fas fa-user"></i></div>
                         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="review-text" data-key="review1_text">「師傅好細心，清洗前後都有講解，洗完之後冷氣凍好多，仲冇晒異味！值得推薦！」</p>
                         <div class="review-author">陳先生 <span>· 元朗</span></div>
                     </div>
-                    <!-- Slide 2 -->
                     <div class="review-slide">
                         <div class="avatar"><i class="fas fa-user"></i></div>
                         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="review-text" data-key="review2_text">「之前部冷氣滴水好嚴重，洗完之後完全解決咗，價錢合理，仲有15天保障，好有信心。」</p>
                         <div class="review-author">李太 <span>· 天水圍</span></div>
                     </div>
-                    <!-- Slide 3 -->
                     <div class="review-slide">
                         <div class="avatar"><i class="fas fa-user"></i></div>
                         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -2425,6 +2598,106 @@
                     </div>
                     <button id="reviewNext"><i class="fas fa-chevron-right"></i></button>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    WHATSAPP 客戶反饋區
+    ============================================================ -->
+    <section class="whatsapp-feedback" id="whatsapp-feedback">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub" data-key="whatsapp_sub"><i class="fab fa-whatsapp"></i> 真實 WhatsApp 好評</span>
+                <h2><i class="fas fa-comment-dots"></i> <span data-key="whatsapp_title">客戶點樣講？</span></h2>
+                <p data-key="whatsapp_desc">來自 WhatsApp 嘅真實對話回饋</p>
+            </div>
+
+            <div class="feedback-grid">
+                <div class="feedback-card reveal" style="transition-delay:0.05s;">
+                    <div class="fb-header">
+                        <div class="fb-avatar">M</div>
+                        <div class="fb-user">
+                            <div class="name">Michael Chan</div>
+                            <div class="time"><i class="fas fa-check-double" style="color:var(--whatsapp-green);"></i> <span data-key="fb_time1">今日 14:32</span></div>
+                        </div>
+                        <div class="fb-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <div class="fb-bubble">
+                        <p data-key="fb_text1">
+                            <span class="fb-emoji">👏</span>
+                            師傅好專業！洗之前有解釋晒成個流程，洗完好乾淨，仲教埋我點樣日常保養。<br />
+                            <span style="font-size:0.8rem; color:var(--text-light);">#元朗 #分體式</span>
+                        </p>
+                    </div>
+                    <div class="fb-badge"><i class="fab fa-whatsapp"></i> <span data-key="fb_verified">已驗證客戶</span></div>
+                </div>
+
+                <div class="feedback-card reveal" style="transition-delay:0.10s;">
+                    <div class="fb-header">
+                        <div class="fb-avatar">L</div>
+                        <div class="fb-user">
+                            <div class="name">Lily Wong</div>
+                            <div class="time"><i class="fas fa-check-double" style="color:var(--whatsapp-green);"></i> <span data-key="fb_time2">昨日 19:15</span></div>
+                        </div>
+                        <div class="fb-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <div class="fb-bubble">
+                        <p data-key="fb_text2">
+                            <span class="fb-emoji">❄️</span>
+                            洗完之後成間屋都涼晒！之前滴水問題搞咗好耐，師傅一次過幫我搞掂，仲有15天保障。<br />
+                            <span style="font-size:0.8rem; color:var(--text-light);">#天水圍 #滴水清洗</span>
+                        </p>
+                    </div>
+                    <div class="fb-badge"><i class="fab fa-whatsapp"></i> <span data-key="fb_verified">已驗證客戶</span></div>
+                </div>
+
+                <div class="feedback-card reveal" style="transition-delay:0.15s;">
+                    <div class="fb-header">
+                        <div class="fb-avatar">K</div>
+                        <div class="fb-user">
+                            <div class="name">Kelvin Tse</div>
+                            <div class="time"><i class="fas fa-check-double" style="color:var(--whatsapp-green);"></i> <span data-key="fb_time3">2日前 11:02</span></div>
+                        </div>
+                        <div class="fb-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <div class="fb-bubble">
+                        <p data-key="fb_text3">
+                            <span class="fb-emoji">👍</span>
+                            約咗成層樓 6 部一齊洗，師傅好準時，仲主動幫我 check 埋隔塵網。平靚正！<br />
+                            <span style="font-size:0.8rem; color:var(--text-light);">#屯門 #集體優惠</span>
+                        </p>
+                    </div>
+                    <div class="fb-badge"><i class="fab fa-whatsapp"></i> <span data-key="fb_verified">已驗證客戶</span></div>
+                </div>
+
+                <div class="feedback-card reveal" style="transition-delay:0.20s;">
+                    <div class="fb-header">
+                        <div class="fb-avatar">C</div>
+                        <div class="fb-user">
+                            <div class="name">Cathy Lam</div>
+                            <div class="time"><i class="fas fa-check-double" style="color:var(--whatsapp-green);"></i> <span data-key="fb_time4">3日前 16:48</span></div>
+                        </div>
+                        <div class="fb-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <div class="fb-bubble">
+                        <p data-key="fb_text4">
+                            <span class="fb-emoji">😊</span>
+                            原本驚洗完會好大陣味，點知完全冇！仲香咗好多，阿囡話間房終於唔會「濕立立」。<br />
+                            <span style="font-size:0.8rem; color:var(--text-light);">#元朗 #家用分體</span>
+                        </p>
+                    </div>
+                    <div class="fb-badge"><i class="fab fa-whatsapp"></i> <span data-key="fb_verified">已驗證客戶</span></div>
+                </div>
+            </div>
+
+            <div class="feedback-cta reveal">
+                <a href="https://wa.me/85266233339?text=你好，我想查詢冷氣清洗服務" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> <span data-key="whatsapp_cta">即刻 WhatsApp 查詢</span>
+                </a>
+                <p style="margin-top:12px; font-size:0.85rem; color:var(--text-light);">
+                    <i class="fas fa-phone-alt" style="color:var(--whatsapp-green);"></i> <span data-key="whatsapp_contact">6623 3339 · 回覆時間 30 分鐘內</span>
+                </p>
             </div>
         </div>
     </section>
@@ -2579,40 +2852,18 @@
                 });
             });
 
-            // ---- 8. Google Form 自動適應高度 (ResizeObserver) ----
+            // ---- 8. Google Form 高度 ----
             const formIframe = document.getElementById('googleFormIframe');
             if (formIframe) {
-                // 先給一個初始高度，讓 ResizeObserver 可以觸發
                 formIframe.style.height = '500px';
-
-                // 用 ResizeObserver 監聽 iframe 內容變化 (需要 iframe 內部配合 postMessage)
-                // 但 Google Form 不支援 postMessage，所以改用定期檢測 + 內容高度讀取
-                // 替代方案：監聽 iframe load 事件，嘗試讀取 contentWindow 高度
                 formIframe.addEventListener('load', function() {
                     try {
-                        // 嘗試讀取 iframe 內容高度 (僅限同源，但 Google Form 不同源，此方法不適用)
-                        // 改用 MutationObserver 監視 iframe 的 style 變化? 但 Google Form 會自動調整?
-                        // 實務上 Google Form 會自動調整高度，但需要父層配合
-                        // 我們改用 setInterval 檢查 iframe 是否有 scrollHeight 變化 (但跨域無法讀取)
-                        // 最實際：固定 min-height + 允許滾動
-                        // 但為了更好的 UX，我們將 iframe 設定為高度自動，使用以下方式:
-                        // 由於 Google Form 不支援 postMessage，我們改用 CSS 讓 iframe 高度根據內容自動撐開
-                        // 但 iframe 跨域無法讀取內容高度，所以我們使用一個常見的 hack:
-                        // 在 iframe 內嵌入一個 script? 不行，因為是 Google 的 form
-                        // 最終方案：保留 min-height + 滾動條，但使用 CSS 讓它看起來自然
-                        // 我們已經在 CSS 設定了 min-height，並且用 transition 讓高度變化平滑
-                        // 這裡我們不做額外操作，保留目前設計
-                        console.log('Google Form 已載入 (跨域，高度固定為 min-height)');
-                    } catch (e) {
-                        // 跨域無法讀取，使用預設高度
-                    }
+                        console.log('Google Form 已載入');
+                    } catch (e) {}
                 });
-
-                // 另外用 ResizeObserver 監視 iframe 父層變化
                 const formWrapper = document.querySelector('.booking-wrapper .form-body');
                 if (formWrapper && window.ResizeObserver) {
                     const ro = new ResizeObserver(function(entries) {
-                        // 當父層大小變化時，稍微調整 iframe 高度
                         const rect = entries[0].contentRect;
                         if (rect.height > 100) {
                             formIframe.style.height = Math.max(400, rect.height - 10) + 'px';
@@ -2622,7 +2873,7 @@
                 }
             }
 
-            // ---- 9. QR Code Modal (付款彈窗) ----
+            // ---- 9. QR Code Modal ----
             const qrModal = document.getElementById('qrModal');
             const qrModalClose = document.getElementById('qrModalClose');
             const qrModalTitle = document.getElementById('qrModalTitle');
@@ -2632,12 +2883,15 @@
             const fpsCode = document.getElementById('fpsCode');
             const copyFpsBtn = document.getElementById('copyFpsBtn');
 
-            // 付款資料
+            // PayMe QR Code
+            const PAYME_QR_URL = 'https://i.ibb.co/MD7sswSt/c32d33fa35a9d8bc8fbb194f11a7e0fa.png';
+            // 轉數快 QR Code (更新為您提供的圖片)
+            const FPS_QR_URL = 'https://i.ibb.co/Kp6CT67z/78da16fab8825ece7462c4da67d78a12.png';
+
             const paymentData = {
                 cash: { title: '現金', sub: '直接支付現金給師傅', qr: null, copy: null },
                 payme: { title: 'PayMe', sub: '掃描以下 PayMe QR Code 付款', qr: 'payme', copy: null },
-                alipay: { title: 'Alipay', sub: '掃描以下 Alipay QR Code 付款', qr: 'alipay', copy: null },
-                fps: { title: '轉數快', sub: '使用轉數快 FPS 付款', qr: null, copy: '66233339' }
+                fps: { title: '轉數快', sub: '使用轉數快 FPS 付款', qr: 'fps', copy: '66233339' }
             };
 
             document.querySelectorAll('.payment-method').forEach(function(el) {
@@ -2648,26 +2902,24 @@
 
                     qrModalTitle.textContent = data.title;
                     qrModalSub.textContent = data.sub;
-
-                    // 重置 QR 顯示
                     qrCodeDisplay.innerHTML = '';
                     copyArea.style.display = 'none';
 
                     if (data.qr === 'payme') {
-                        // PayMe 示範 QR (實際需替換為真實 QR 圖片)
-                        qrCodeDisplay.innerHTML =
-                            '<img src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Crect fill=\'%231e7ea3\' width=\'200\' height=\'200\' rx=\'16\'/%3E%3Ctext x=\'50\' y=\'110\' font-size=\'28\' fill=\'white\' font-family=\'sans-serif\'%3EPayMe%3C/text%3E%3C/svg%3E" alt="PayMe QR" />';
-                    } else if (data.qr === 'alipay') {
-                        qrCodeDisplay.innerHTML =
-                            '<img src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Crect fill=\'%23167cff\' width=\'200\' height=\'200\' rx=\'16\'/%3E%3Ctext x=\'45\' y=\'110\' font-size=\'28\' fill=\'white\' font-family=\'sans-serif\'%3EAlipay%3C/text%3E%3C/svg%3E" alt="Alipay QR" />';
+                        qrCodeDisplay.innerHTML = '<img src="' + PAYME_QR_URL +
+                            '" alt="PayMe QR Code" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" />';
+                    } else if (data.qr === 'fps') {
+                        // 使用新圖片顯示轉數快 QR Code
+                        qrCodeDisplay.innerHTML = '<img src="' + FPS_QR_URL +
+                            '" alt="FPS QR Code" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" />';
+                        copyArea.style.display = 'flex';
+                        fpsCode.textContent = data.copy;
                     } else if (data.copy) {
-                        // 轉數快：顯示 QR + 複製帳號
                         qrCodeDisplay.innerHTML =
                             '<img src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Crect fill=\'%23082b3f\' width=\'200\' height=\'200\' rx=\'16\'/%3E%3Ctext x=\'42\' y=\'110\' font-size=\'26\' fill=\'white\' font-family=\'sans-serif\'%3EFPS%3C/text%3E%3C/svg%3E" alt="FPS QR" />';
                         copyArea.style.display = 'flex';
                         fpsCode.textContent = data.copy;
                     } else {
-                        // 現金
                         qrCodeDisplay.innerHTML = '<i class="fas fa-money-bill-wave" style="font-size:4rem;color:var(--primary-blue);"></i>';
                     }
 
@@ -2676,7 +2928,6 @@
                 });
             });
 
-            // 關閉 Modal
             function closeModal() {
                 qrModal.classList.remove('active');
                 document.body.style.overflow = '';
@@ -2689,18 +2940,14 @@
                 if (e.key === 'Escape') closeModal();
             });
 
-            // 複製 FPS 帳號
             if (copyFpsBtn) {
                 copyFpsBtn.addEventListener('click', function() {
                     const text = fpsCode.textContent;
                     navigator.clipboard.writeText(text).then(function() {
                         const orig = copyFpsBtn.innerHTML;
                         copyFpsBtn.innerHTML = '<i class="fas fa-check"></i> 已複製';
-                        setTimeout(function() {
-                            copyFpsBtn.innerHTML = orig;
-                        }, 2000);
+                        setTimeout(function() { copyFpsBtn.innerHTML = orig; }, 2000);
                     }).catch(function() {
-                        // fallback
                         const range = document.createRange();
                         range.selectNode(fpsCode);
                         window.getSelection().removeAllRanges();
@@ -2708,9 +2955,7 @@
                         document.execCommand('copy');
                         const orig = copyFpsBtn.innerHTML;
                         copyFpsBtn.innerHTML = '<i class="fas fa-check"></i> 已複製';
-                        setTimeout(function() {
-                            copyFpsBtn.innerHTML = orig;
-                        }, 2000);
+                        setTimeout(function() { copyFpsBtn.innerHTML = orig; }, 2000);
                     });
                 });
             }
@@ -2741,7 +2986,6 @@
                         goToSlide(parseInt(this.getAttribute('data-index')));
                     });
                 });
-                // 自動輪播
                 let autoPlay = setInterval(function() { goToSlide(currentIndex + 1); }, 5000);
                 const carousel = document.querySelector('.reviews-carousel');
                 carousel.addEventListener('mouseenter', function() { clearInterval(autoPlay); });
@@ -2750,7 +2994,7 @@
                 });
             }
 
-            // ---- 11. 雪花飄落 (25個) ----
+            // ---- 11. 雪花 ----
             (function createSnowflakes() {
                 var container = document.getElementById('snowfall');
                 var flakes = ['❄', '❅', '❆', '✦', '•'];
@@ -2767,9 +3011,11 @@
                 }
             })();
 
-            // ---- 12. 多語言切換 (示範: 繁/簡/英) ----
+            // ---- 12. 完整多語言切換 (繁/簡/英) ----
             const langData = {
                 'zh-hk': {
+                    'brand_tag': '慢洗冷氣專家',
+                    'service_area': '元朗 · 天水圍 · 屯門',
                     'nav_services': '服務',
                     'nav_steps': '洗機步驟',
                     'nav_pricing': '價格',
@@ -2859,6 +3105,20 @@
                     'review1_text': '「師傅好細心，清洗前後都有講解，洗完之後冷氣凍好多，仲冇晒異味！值得推薦！」',
                     'review2_text': '「之前部冷氣滴水好嚴重，洗完之後完全解決咗，價錢合理，仲有15天保障，好有信心。」',
                     'review3_text': '「約咗三個鄰居一齊洗，每人慳咗$150，師傅仲提早到，好準時，服務一流！」',
+                    'whatsapp_sub': '真實 WhatsApp 好評',
+                    'whatsapp_title': '客戶點樣講？',
+                    'whatsapp_desc': '來自 WhatsApp 嘅真實對話回饋',
+                    'fb_time1': '今日 14:32',
+                    'fb_time2': '昨日 19:15',
+                    'fb_time3': '2日前 11:02',
+                    'fb_time4': '3日前 16:48',
+                    'fb_text1': '師傅好專業！洗之前有解釋晒成個流程，洗完好乾淨，仲教埋我點樣日常保養。 #元朗 #分體式',
+                    'fb_text2': '洗完之後成間屋都涼晒！之前滴水問題搞咗好耐，師傅一次過幫我搞掂，仲有15天保障。 #天水圍 #滴水清洗',
+                    'fb_text3': '約咗成層樓 6 部一齊洗，師傅好準時，仲主動幫我 check 埋隔塵網。平靚正！ #屯門 #集體優惠',
+                    'fb_text4': '原本驚洗完會好大陣味，點知完全冇！仲香咗好多，阿囡話間房終於唔會「濕立立」。 #元朗 #家用分體',
+                    'fb_verified': '已驗證客戶',
+                    'whatsapp_cta': '即刻 WhatsApp 查詢',
+                    'whatsapp_contact': '6623 3339 · 回覆時間 30 分鐘內',
                     'contact_sub': '聯繫我們',
                     'contact_title': '聯絡立夏工程',
                     'contact_desc': '隨時為您服務，歡迎查詢或預約',
@@ -2879,6 +3139,8 @@
                     'footer_sub': '元天屯 · 十年信譽'
                 },
                 'zh-cn': {
+                    'brand_tag': '慢洗空调专家',
+                    'service_area': '元朗 · 天水围 · 屯门',
                     'nav_services': '服务',
                     'nav_steps': '洗机步骤',
                     'nav_pricing': '价格',
@@ -2968,6 +3230,20 @@
                     'review1_text': '「师傅很细心，清洗前后都有讲解，洗完空调冷很多，还没有异味！值得推荐！」',
                     'review2_text': '「之前空调滴水很严重，洗完完全解决了，价格合理，还有15天保障，很有信心。」',
                     'review3_text': '「约了三个邻居一起洗，每人省了$150，师傅还提早到，很准时，服务一流！」',
+                    'whatsapp_sub': '真实 WhatsApp 好评',
+                    'whatsapp_title': '客户怎么讲？',
+                    'whatsapp_desc': '来自 WhatsApp 的真实对话反馈',
+                    'fb_time1': '今天 14:32',
+                    'fb_time2': '昨天 19:15',
+                    'fb_time3': '2天前 11:02',
+                    'fb_time4': '3天前 16:48',
+                    'fb_text1': '师傅好专业！洗之前有解释整个流程，洗完很干净，还教我日常保养。 #元朗 #分体式',
+                    'fb_text2': '洗完整个屋子都凉快了！之前滴水问题搞了很久，师傅一次性搞定，还有15天保障。 #天水围 #滴水清洗',
+                    'fb_text3': '约了整个楼层 6 部一起洗，师傅很准时，还主动帮我检查隔尘网。平靓正！ #屯门 #集体优惠',
+                    'fb_text4': '原本担心洗完会有异味，结果完全没有！还香了很多，女儿说房间终于不会「湿漉漉」了。 #元朗 #家用分体',
+                    'fb_verified': '已验证客户',
+                    'whatsapp_cta': '立即 WhatsApp 查询',
+                    'whatsapp_contact': '6623 3339 · 回复时间 30 分钟内',
                     'contact_sub': '联系我们',
                     'contact_title': '联络立夏工程',
                     'contact_desc': '随时为您服务，欢迎查询或预约',
@@ -2978,7 +3254,7 @@
                     'contact_area': '元朗 · 天水围 · 屯门',
                     'contact_hours_label': '营业时间：',
                     'contact_hours': '星期一至六 09:00 – 20:00',
-                    'contact_reply': '回覆时间：一般 30 分钟内',
+                    'contact_reply': '回复时间：一般 30 分钟内',
                     'contact_map_addr': '📍 香港元朗朗益广场',
                     'contact_map_note': '元朗港铁站步行 10 分钟',
                     'contact_map_whatsapp': '欢迎 whatsapp 预约报价',
@@ -2988,6 +3264,8 @@
                     'footer_sub': '元天屯 · 十年信誉'
                 },
                 'en': {
+                    'brand_tag': 'Slow & Careful AC Expert',
+                    'service_area': 'Yuen Long · Tin Shui Wai · Tuen Mun',
                     'nav_services': 'Services',
                     'nav_steps': 'Steps',
                     'nav_pricing': 'Pricing',
@@ -3077,6 +3355,20 @@
                     'review1_text': '"The technician was very thorough, explaining before and after. The AC is much colder now with no odor! Highly recommended."',
                     'review2_text': '"The dripping issue was completely fixed after cleaning. Reasonable price with a 15-day guarantee – great peace of mind."',
                     'review3_text': '"We booked together with three neighbors and saved $150 each. The technician arrived early and was very punctual. Excellent service!"',
+                    'whatsapp_sub': 'Real WhatsApp Reviews',
+                    'whatsapp_title': 'What Our Clients Say?',
+                    'whatsapp_desc': 'Real feedback from WhatsApp conversations',
+                    'fb_time1': 'Today 14:32',
+                    'fb_time2': 'Yesterday 19:15',
+                    'fb_time3': '2 days ago 11:02',
+                    'fb_time4': '3 days ago 16:48',
+                    'fb_text1': 'The technician was very professional! Explained the whole process before starting, cleaned thoroughly, and even taught me daily maintenance. #YuenLong #SplitAC',
+                    'fb_text2': 'The whole house is so cool now! The dripping issue was bothering us for a long time, but the technician fixed it all at once, plus a 15-day guarantee. #TinShuiWai #DripCleaning',
+                    'fb_text3': 'Booked 6 units together on the same floor – the technician arrived on time and even checked the air filters proactively. Great value! #TuenMun #BulkDiscount',
+                    'fb_text4': 'I was worried about strong smells after cleaning, but there was none! It even smells fresher, and my daughter said her room is no longer "damp and sticky". #YuenLong #HouseholdAC',
+                    'fb_verified': 'Verified Customer',
+                    'whatsapp_cta': 'WhatsApp Us Now',
+                    'whatsapp_contact': '6623 3339 · Reply within 30 mins',
                     'contact_sub': 'Contact Us',
                     'contact_title': 'Reach AirconSummer Engineering',
                     'contact_desc': 'Always here to help – inquiries and bookings welcome',
@@ -3094,7 +3386,7 @@
                     'footer_tag': 'Hong Kong AC Cleaning Expert',
                     'footer_slogan': 'Slow & Careful',
                     'footer_heart': 'Serving every customer with heart',
-                    'footer_sub': 'YuenLong TinSuiWai TuenMun · 10 Years Trust'
+                    'footer_sub': 'Yuen Tin Tuen · 10 Years Trust'
                 }
             };
 
@@ -3106,54 +3398,43 @@
                 const data = langData[lang];
                 if (!data) return;
 
-                // 更新所有有 data-key 的 element
                 document.querySelectorAll('[data-key]').forEach(function(el) {
                     const key = el.getAttribute('data-key');
                     if (data[key] !== undefined) {
-                        // 保留 HTML 結構 (如 <i> 標籤)
-                        // 但如果是純文字，直接替換
-                        if (el.children.length === 0 || el.tagName === 'P' || el.tagName === 'SPAN' || el.tagName === 'H1' ||
-                            el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'H4' || el.tagName === 'DIV') {
-                            // 檢查是否包含 <i> 或 <br>，保留它們
+                        if (el.children.length === 0 || el.tagName === 'P' || el.tagName === 'SPAN' ||
+                            el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' ||
+                            el.tagName === 'H4' || el.tagName === 'DIV') {
                             const hasIcon = el.querySelector('i');
                             const hasBr = el.querySelector('br');
                             if (hasIcon || hasBr) {
-                                // 複雜結構，用 innerHTML 但保留標籤
-                                // 簡化：只替換文字節點
                                 const temp = document.createElement('div');
                                 temp.innerHTML = data[key];
-                                // 複製子節點
                                 el.innerHTML = temp.innerHTML;
                             } else {
                                 el.textContent = data[key];
                             }
                         } else {
-                            // 其他元素，直接替換 textContent
                             el.textContent = data[key];
                         }
                     }
                 });
 
-                // 更新按鈕 active 狀態
                 langButtons.forEach(function(btn) {
                     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
                 });
-
-                // 更新 html lang
                 document.documentElement.lang = lang === 'zh-hk' ? 'zh-HK' : lang === 'zh-cn' ? 'zh-CN' : 'en';
             }
 
             langButtons.forEach(function(btn) {
                 btn.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    applyLanguage(lang);
+                    applyLanguage(this.getAttribute('data-lang'));
                 });
             });
 
             // 預設繁體
             applyLanguage('zh-hk');
 
-            console.log('❄️ 立夏工程｜優化版 v2.0 (含 QR 付款 / 評價輪播 / 多語言)');
+            console.log('❄️ 立夏工程｜完整多語言支援 (繁/簡/英) ✅');
 
         })();
     </script>
