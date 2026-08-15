@@ -53,7 +53,7 @@
 
     <style>
         /* ============================================================
-               1. CSS VARIABLES
+               1. CSS VARIABLES (優化：加入品牌點綴色)
                ============================================================ */
         :root {
             --primary-dark: #082b3f;
@@ -76,6 +76,10 @@
             --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             --whatsapp-green: #25D366;
             --whatsapp-bubble: #dcf8c6;
+            /* 品牌點綴色：清涼湖水綠 */
+            --accent-color: #00C9A7;
+            --accent-light: #E0F7F2;
+            --accent-gradient: linear-gradient(135deg, #00C9A7, #00A88B);
         }
 
         /* ============================================================
@@ -110,7 +114,7 @@
         }
 
         /* ============================================================
-               3. BUTTONS
+               3. BUTTONS (優化：新增品牌色 CTA)
                ============================================================ */
         .btn {
             display: inline-flex;
@@ -170,6 +174,16 @@
             background: var(--primary-dark);
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 12px 36px rgba(8, 43, 63, 0.25);
+        }
+        /* 主要 CTA 按鈕 - 品牌點綴色 */
+        .btn-accent {
+            background: var(--accent-gradient);
+            color: var(--white);
+            box-shadow: 0 6px 24px rgba(0, 201, 167, 0.35);
+        }
+        .btn-accent:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 36px rgba(0, 201, 167, 0.45);
         }
         .btn-whatsapp {
             background: var(--whatsapp-green);
@@ -240,7 +254,7 @@
         }
 
         /* ============================================================
-               4. HEADER
+               4. HEADER (優化：手機板遮罩)
                ============================================================ */
         .header {
             position: fixed;
@@ -467,8 +481,26 @@
             transition: var(--transition);
         }
 
+        /* 手機板選單遮罩 */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.40);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .nav-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
         /* ============================================================
-               5. HERO
+               5. HERO (優化：加入15天保障徽章)
                ============================================================ */
         .hero {
             position: relative;
@@ -575,6 +607,30 @@
                 transform: translateY(-8px);
             }
         }
+        /* 15天保障徽章 */
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 20px 8px 16px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 8px 0 16px;
+        }
+        .trust-badge i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        .trust-badge .highlight-num {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
         .hero-content .desc {
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.82);
@@ -723,7 +779,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--primary-light), var(--primary-blue));
+            background: var(--accent-gradient);
             background-size: 200% 100%;
             opacity: 0;
             transition: var(--transition);
@@ -746,7 +802,7 @@
         .feature-card:hover {
             transform: translateY(-6px) scale(1.01);
             box-shadow: var(--shadow-md);
-            border-color: var(--primary-pale);
+            border-color: var(--accent-color);
         }
         .feature-card .icon {
             font-size: 2.4rem;
@@ -763,10 +819,10 @@
             transition: var(--transition);
         }
         .feature-card:hover .icon {
-            background: var(--primary-blue);
+            background: var(--accent-gradient);
             color: var(--white);
             transform: scale(1.04) rotate(4deg);
-            box-shadow: 0 8px 30px rgba(30, 126, 163, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 201, 167, 0.30);
         }
         .feature-card h3 {
             font-size: 1.1rem;
@@ -806,13 +862,13 @@
         .step-item:hover {
             transform: translateY(-4px) scale(1.01);
             box-shadow: var(--shadow-md);
-            border-color: var(--primary-blue);
+            border-color: var(--accent-color);
         }
         .step-item .step-number {
             font-size: 2.2rem;
             font-weight: 800;
-            color: var(--primary-blue);
-            opacity: 0.12;
+            color: var(--accent-color);
+            opacity: 0.15;
             display: block;
             line-height: 1;
             margin-bottom: 2px;
@@ -820,7 +876,7 @@
             transition: var(--transition);
         }
         .step-item:hover .step-number {
-            opacity: 0.25;
+            opacity: 0.35;
             transform: scale(1.08);
         }
         .step-item .step-icon {
@@ -832,7 +888,7 @@
         }
         .step-item:hover .step-icon {
             transform: scale(1.12) rotate(4deg);
-            color: var(--primary-dark);
+            color: var(--accent-color);
         }
         .step-item h4 {
             font-size: 1rem;
@@ -847,7 +903,7 @@
         }
 
         /* ============================================================
-               9. PRICING
+               9. PRICING (優化：價格更突出，加入CTA按鈕)
                ============================================================ */
         .pricing {
             padding: 70px 0 60px;
@@ -863,36 +919,29 @@
         .pricing-card {
             background: var(--white);
             border-radius: var(--radius-md);
-            padding: 32px 24px 36px;
+            padding: 32px 24px 30px;
             text-align: center;
             border: 1px solid var(--gray-200);
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .pricing-card:hover {
             transform: translateY(-4px) scale(1.01);
             box-shadow: var(--shadow-md);
         }
         .pricing-card.popular {
-            border: 2px solid var(--primary-blue);
-            background: var(--primary-bg);
-            box-shadow: var(--shadow-md);
-            animation: popular-glow 3s ease-in-out infinite alternate;
-        }
-        @keyframes popular-glow {
-            0% {
-                box-shadow: 0 0 20px rgba(30, 126, 163, 0.15);
-            }
-            100% {
-                box-shadow: 0 0 40px rgba(30, 126, 163, 0.30);
-            }
+            border: 2px solid var(--accent-color);
+            background: var(--white);
+            box-shadow: 0 0 30px rgba(0, 201, 167, 0.12);
         }
         .pricing-card.popular .badge {
             position: absolute;
             top: -14px;
             right: 18px;
-            background: var(--primary-blue);
+            background: var(--accent-gradient);
             color: var(--white);
             font-size: 0.65rem;
             font-weight: 700;
@@ -908,7 +957,7 @@
             margin-bottom: 2px;
         }
         .pricing-card .price {
-            font-size: 2.6rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--primary-dark);
             margin: 6px 0 2px;
@@ -916,7 +965,7 @@
             transition: var(--transition);
         }
         .pricing-card:hover .price {
-            color: var(--primary-blue);
+            color: var(--accent-color);
         }
         .pricing-card .price small {
             font-size: 0.9rem;
@@ -929,18 +978,20 @@
             margin-bottom: 12px;
         }
         .pricing-card .discount {
-            background: #e6f3e9;
-            color: #1a6a3a;
+            background: var(--accent-light);
+            color: #008573;
             padding: 4px 12px;
             border-radius: 40px;
             font-size: 0.75rem;
             font-weight: 600;
             display: inline-block;
+            margin-bottom: 12px;
         }
         .pricing-card .feature-list {
-            margin-top: 16px;
+            margin-top: 4px;
             text-align: left;
             padding: 0 4px;
+            flex: 1;
         }
         .pricing-card .feature-list li {
             list-style: none;
@@ -952,17 +1003,27 @@
             gap: 8px;
         }
         .pricing-card .feature-list li i {
-            color: var(--primary-blue);
+            color: var(--accent-color);
             width: 18px;
             text-align: center;
+        }
+        /* 價格卡內的 CTA */
+        .pricing-card .card-cta {
+            margin-top: 18px;
+        }
+        .pricing-card .card-cta .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 12px 20px;
+            font-size: 0.9rem;
         }
 
         .bulk-deal {
             margin-top: 28px;
             padding: 20px 24px;
-            background: linear-gradient(135deg, #e6f3e9 0%, #d4e8e0 100%);
+            background: var(--accent-gradient);
             border-radius: var(--radius-md);
-            border: 2px solid #1a6a3a;
+            border: none;
             text-align: center;
             max-width: 540px;
             margin-left: auto;
@@ -970,31 +1031,30 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            color: var(--white);
         }
         .bulk-deal::before {
             content: '🪙';
             position: absolute;
             font-size: 4.5rem;
-            opacity: 0.05;
+            opacity: 0.10;
             right: -20px;
             bottom: -20px;
             transform: rotate(15deg);
         }
         .bulk-deal:hover {
-            transform: scale(1.01);
-            box-shadow: 0 12px 40px rgba(26, 106, 58, 0.12);
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 201, 167, 0.30);
         }
         .bulk-deal .bulk-title {
             font-size: 1.05rem;
             font-weight: 700;
-            color: #0d4a2a;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
         .bulk-deal .bulk-title i {
-            color: #1a6a3a;
             font-size: 1.3rem;
             animation: coin-spin 4s ease-in-out infinite;
         }
@@ -1010,16 +1070,15 @@
         .bulk-deal .bulk-price {
             font-size: 2rem;
             font-weight: 800;
-            color: #0d4a2a;
             margin: 2px 0;
         }
         .bulk-deal .bulk-price small {
             font-size: 0.9rem;
             font-weight: 400;
-            color: #2a6a4a;
+            opacity: 0.8;
         }
         .bulk-deal .bulk-desc {
-            color: #1a5a3a;
+            opacity: 0.9;
             font-size: 0.88rem;
         }
 
@@ -1072,7 +1131,7 @@
         }
         .video-card .video-meta i {
             font-size: 1rem;
-            color: var(--primary-blue);
+            color: var(--accent-color);
             transition: var(--transition);
         }
         .video-card:hover .video-meta i {
@@ -1120,7 +1179,7 @@
         }
         .booking-wrapper .form-header i {
             font-size: 1.5rem;
-            color: var(--primary-pale);
+            color: var(--accent-color);
             animation: float-icon 4s ease-in-out infinite;
         }
         .booking-wrapper .form-header h3 {
@@ -1152,7 +1211,7 @@
             font-size: 0.85rem;
         }
         .booking-note i {
-            color: var(--primary-blue);
+            color: var(--accent-color);
             margin-right: 6px;
         }
 
@@ -1189,12 +1248,12 @@
         .payment-method:hover {
             transform: translateY(-3px) scale(1.03);
             box-shadow: var(--shadow-sm);
-            border-color: var(--primary-blue);
+            border-color: var(--accent-color);
             background: var(--white);
         }
         .payment-method i {
             font-size: 1.3rem;
-            color: var(--primary-blue);
+            color: var(--accent-color);
             width: 26px;
             text-align: center;
             transition: var(--transition);
@@ -1260,7 +1319,7 @@
             margin-bottom: 4px;
         }
         .qr-modal .modal-title i {
-            color: var(--primary-blue);
+            color: var(--accent-color);
             margin-right: 8px;
         }
         .qr-modal .modal-sub {
@@ -1306,7 +1365,7 @@
             word-break: break-all;
         }
         .qr-modal .copy-area .btn-copy {
-            background: var(--primary-blue);
+            background: var(--accent-gradient);
             color: var(--white);
             border: none;
             padding: 8px 18px;
@@ -1317,8 +1376,8 @@
             transition: var(--transition);
         }
         .qr-modal .copy-area .btn-copy:hover {
-            background: var(--primary-dark);
             transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(0, 201, 167, 0.30);
         }
 
         /* ============================================================
@@ -1355,14 +1414,14 @@
             width: 72px;
             height: 72px;
             border-radius: 50%;
-            background: var(--primary-pale);
+            background: var(--accent-light);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            color: var(--primary-blue);
+            color: var(--accent-color);
             margin-bottom: 10px;
-            border: 3px solid var(--primary-blue);
+            border: 3px solid var(--accent-color);
         }
         .review-slide .stars {
             color: #f5b342;
@@ -1397,7 +1456,7 @@
             margin-top: 20px;
         }
         .review-controls button {
-            background: var(--primary-blue);
+            background: var(--accent-gradient);
             color: var(--white);
             border: none;
             width: 44px;
@@ -1406,11 +1465,11 @@
             font-size: 1.1rem;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 4px 16px rgba(30, 126, 163, 0.20);
+            box-shadow: 0 4px 16px rgba(0, 201, 167, 0.25);
         }
         .review-controls button:hover {
-            background: var(--primary-dark);
             transform: scale(1.08);
+            box-shadow: 0 8px 30px rgba(0, 201, 167, 0.35);
         }
         .review-dots {
             display: flex;
@@ -1426,7 +1485,7 @@
             transition: var(--transition);
         }
         .review-dots .dot.active {
-            background: var(--primary-blue);
+            background: var(--accent-color);
             transform: scale(1.2);
         }
         .review-dots .dot:hover {
@@ -1585,7 +1644,75 @@
         }
 
         /* ============================================================
-               15. CONTACT
+               15. FAQ (新增區塊)
+               ============================================================ */
+        .faq {
+            padding: 60px 0 70px;
+            background: var(--primary-bg);
+        }
+        .faq-list {
+            max-width: 780px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .faq-item .faq-question {
+            padding: 18px 24px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .faq-item .faq-question:hover {
+            color: var(--accent-color);
+        }
+        .faq-item .faq-question .faq-icon {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        .faq-item.active .faq-question .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-item .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 24px;
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 24px 20px;
+        }
+
+        /* ============================================================
+               16. CONTACT
                ============================================================ */
         .contact {
             padding: 60px 0 70px;
@@ -1596,7 +1723,7 @@
             color: var(--white);
         }
         .contact .section-title h2 i {
-            color: var(--primary-pale);
+            color: var(--accent-color);
         }
         .contact .section-title p {
             color: rgba(255, 255, 255, 0.55);
@@ -1630,7 +1757,7 @@
         }
         .contact-item i {
             font-size: 1.1rem;
-            color: #b0d8e8;
+            color: var(--accent-color);
             width: 28px;
             text-align: center;
             transition: var(--transition);
@@ -1719,7 +1846,7 @@
         }
 
         /* ============================================================
-               16. FOOTER
+               17. FOOTER
                ============================================================ */
         .footer {
             background: #041a26;
@@ -1752,7 +1879,7 @@
         }
 
         /* ============================================================
-               17. REVEAL
+               18. REVEAL
                ============================================================ */
         .reveal {
             opacity: 0;
@@ -1765,7 +1892,7 @@
         }
 
         /* ============================================================
-               18. BREEZE + SNOWFALL
+               19. BREEZE + SNOWFALL
                ============================================================ */
         .breeze-container {
             position: fixed;
@@ -1889,7 +2016,7 @@
         }
 
         /* ============================================================
-               19. RESPONSIVE
+               20. RESPONSIVE
                ============================================================ */
         @media (max-width: 1024px) {
             .hero .container {
@@ -1963,6 +2090,7 @@
                 box-shadow: 0 24px 48px rgba(0, 0, 0, 0.30);
                 justify-content: center;
                 align-items: center;
+                z-index: 1001;
             }
             .nav-links.active {
                 transform: translateY(0);
@@ -1970,6 +2098,12 @@
             .nav-toggle {
                 display: flex;
             }
+            /* 遮罩 */
+            .nav-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+
             .hero-content h1 {
                 font-size: 2.2rem;
             }
@@ -2064,6 +2198,13 @@
             .feedback-card {
                 padding: 20px 20px 18px;
             }
+            .faq-item .faq-question {
+                padding: 14px 18px;
+                font-size: 0.9rem;
+            }
+            .faq-item .faq-answer {
+                font-size: 0.88rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2087,11 +2228,18 @@
             .hero-stats .stat-item .number {
                 font-size: 1.4rem;
             }
+            .trust-badge {
+                font-size: 0.75rem;
+                padding: 6px 14px;
+            }
+            .trust-badge .highlight-num {
+                font-size: 0.9rem;
+            }
             .section-title h2 {
                 font-size: 1.5rem;
             }
             .pricing-card .price {
-                font-size: 2rem;
+                font-size: 2.4rem;
             }
             .payment-methods {
                 gap: 8px;
@@ -2220,6 +2368,13 @@
                 padding: 12px 24px;
                 font-size: 0.85rem;
             }
+            .faq-item .faq-question {
+                padding: 12px 14px;
+                font-size: 0.85rem;
+            }
+            .faq-item .faq-answer {
+                font-size: 0.82rem;
+            }
         }
     </style>
 </head>
@@ -2277,6 +2432,7 @@
                     <li><a href="#videos" data-nav data-key="nav_videos">影片</a></li>
                     <li><a href="#booking" data-nav data-key="nav_booking">預約</a></li>
                     <li><a href="#payment" data-nav data-key="nav_payment">付款</a></li>
+                    <li><a href="#faq" data-nav data-key="nav_faq">常見問題</a></li>
                     <li><a href="#contact" data-nav data-key="nav_contact">聯絡</a></li>
                 </ul>
             </nav>
@@ -2285,6 +2441,9 @@
             </button>
         </div>
     </header>
+
+    <!-- 手機板遮罩 -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
@@ -2302,6 +2461,13 @@
                     <span data-key="hero_slogan">慢工出細貨 只要您唔趕時間</span>
                     <i class="fas fa-droplet"></i>
                 </div>
+
+                <!-- 15天保障徽章 -->
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span><span class="highlight-num">15</span> 天 <span data-key="hero_trust">洗後滴水保障</span></span>
+                </div>
+
                 <p class="desc" data-key="hero_desc">
                     <i class="fas fa-check-circle"></i> 高壓深層清洗
                     <i class="fas fa-check-circle" style="margin-left:16px;"></i> 防霉殺菌處理<br />
@@ -2309,7 +2475,7 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#pricing" class="btn btn-primary" data-key="hero_btn1"><i class="fas fa-tag"></i> 查詢價格</a>
-                    <a href="#booking" class="btn btn-outline" data-key="hero_btn2"><i class="fas fa-calendar-check"></i> 立即預約 </a>
+                    <a href="#booking" class="btn btn-accent" data-key="hero_btn2"><i class="fas fa-calendar-check"></i> 立即預約</a>
                 </div>
             </div>
             <div class="hero-stats">
@@ -2423,6 +2589,9 @@
                         <li><i class="fas fa-check-circle"></i> <span data-key="p1_f2">基本拆洗 + 外殼清潔</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-key="p1_f3">製冷效能檢測</span></li>
                     </ul>
+                    <div class="card-cta">
+                        <a href="#booking" class="btn btn-accent"><i class="fas fa-calendar-check"></i> 立即預約</a>
+                    </div>
                 </div>
                 <div class="pricing-card reveal" style="transition-delay:0.10s;">
                     <div class="name" data-key="p2_name">滴水清洗</div>
@@ -2434,6 +2603,9 @@
                         <li><i class="fas fa-check-circle"></i> <span data-key="p2_f2">排水管疏通 + 防漏測試</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-key="p2_f3">額外消毒殺菌</span></li>
                     </ul>
+                    <div class="card-cta">
+                        <a href="#booking" class="btn btn-accent"><i class="fas fa-calendar-check"></i> 立即預約</a>
+                    </div>
                 </div>
             </div>
             <div class="bulk-deal reveal" style="transition-delay:0.15s;">
@@ -2446,12 +2618,12 @@
                 <div class="bulk-desc" data-key="bulk_desc">
                     <i class="fas fa-check-circle"></i> 10 部或以上，同一屋苑集體預約
                 </div>
-                <div style="margin-top:4px; font-size:0.78rem; color:#1a5a3a; opacity:0.7;" data-key="bulk_note">
+                <div style="margin-top:4px; font-size:0.78rem; opacity:0.7;" data-key="bulk_note">
                     <i class="fas fa-clock"></i> 歡迎鄰居夾單，彈性安排時間
                 </div>
             </div>
             <div style="text-align:center; margin-top:22px; color:var(--text-light); font-size:0.85rem;">
-                <i class="fas fa-info-circle" style="color:var(--primary-blue);"></i>
+                <i class="fas fa-info-circle" style="color:var(--accent-color);"></i>
                 <span data-key="pricing_note">實際報價以師傅上門評估為準，歡迎查詢。</span>
             </div>
         </div>
@@ -2488,7 +2660,7 @@
                 </div>
             </div>
             <div style="text-align:center; margin-top:16px; color:var(--text-light); font-size:0.85rem;">
-                <i class="fas fa-arrow-right" style="color:var(--primary-blue);"></i>
+                <i class="fas fa-arrow-right" style="color:var(--accent-color);"></i>
                 <span data-key="videos_note">點擊影片觀看更多清洗細節</span>
             </div>
         </div>
@@ -2535,7 +2707,7 @@
                 <div class="payment-method" data-payment="fps"><i class="fas fa-exchange-alt"></i> <span data-key="pay_fps">轉數快</span></div>
             </div>
             <div style="text-align:center; margin-top:16px; color:var(--text-light); font-size:0.85rem;">
-                <i class="fas fa-shield-alt" style="color:var(--primary-blue);"></i>
+                <i class="fas fa-shield-alt" style="color:var(--accent-color);"></i>
                 <span data-key="payment_note">所有付款方式均安全可靠，完成後可提供收據。</span>
             </div>
         </div>
@@ -2702,11 +2874,61 @@
         </div>
     </section>
 
+    <!-- ============================================================
+    FAQ 常見問題 (新增區塊)
+    ============================================================ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub" data-key="faq_sub"><i class="fas fa-question-circle"></i> 常見問題</span>
+                <h2><i class="fas fa-comments"></i> <span data-key="faq_title">您可能想知</span></h2>
+                <p data-key="faq_desc">解答您對冷氣清洗嘅疑慮</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-key="faq_q1">清洗一部冷氣需要幾耐時間？</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer" data-key="faq_a1">一般家用分體式冷氣清洗約需 45 分鐘至 1 小時。若冷氣機滴水嚴重或需要額外處理，時間可能會稍長。師傅會先評估再同您確認。</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-key="faq_q2">清洗冷氣會唔會整濕間屋？</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer" data-key="faq_a2">唔會！我哋會鋪設專業保護墊同防水布，並使用集水袋收集污水。清洗完成後會徹底清潔現場，確保您嘅家居整潔如初。</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-key="faq_q3">15天保障係點樣運作？</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer" data-key="faq_a3">清洗完成後 15 日內，如果出現同一個問題（例如同一位置滴水），我哋會免費上門跟進處理，確保您用得安心。</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-key="faq_q4">窗口式冷氣可以清洗嗎？</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer" data-key="faq_a4">可以！我哋同樣提供窗口式冷氣清洗服務。由於結構不同，清洗方式會略有調整，歡迎查詢報價。</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-key="faq_q5">點樣預約最快？</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer" data-key="faq_a5">最快方法係點擊上面「立即預約」按鈕填寫表格，或者直接 WhatsApp 6623 3339 聯絡我哋，一般 30 分鐘內會回覆。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" style="background:rgba(255,255,255,0.08); color:var(--primary-pale);" data-key="contact_sub"><i class="fas fa-address-card"></i> 聯繫我們</span>
+                <span class="sub" style="background:rgba(255,255,255,0.08); color:var(--accent-color);" data-key="contact_sub"><i class="fas fa-address-card"></i> 聯繫我們</span>
                 <h2><i class="fas fa-phone-alt"></i> <span data-key="contact_title">聯絡立夏工程</span></h2>
                 <p style="color:rgba(255,255,255,0.55);" data-key="contact_desc">隨時為您服務，歡迎查詢或預約</p>
             </div>
@@ -2775,15 +2997,28 @@
         (function() {
             'use strict';
 
-            // ---- 1. 手機導航 ----
+            // ---- 1. 手機導航 + 遮罩 ----
             const navToggle = document.getElementById('navToggle');
             const navLinks = document.getElementById('navLinks');
-            navToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
+            const navOverlay = document.getElementById('navOverlay');
+
+            function toggleNav(show) {
+                const isOpen = show !== undefined ? show : !navLinks.classList.contains('active');
+                navLinks.classList.toggle('active', isOpen);
+                navOverlay.classList.toggle('active', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            }
+
+            navToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleNav();
+            });
+            navOverlay.addEventListener('click', function() {
+                toggleNav(false);
             });
             document.querySelectorAll('[data-nav]').forEach(function(link) {
                 link.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
+                    toggleNav(false);
                 });
             });
 
@@ -2856,11 +3091,6 @@
             const formIframe = document.getElementById('googleFormIframe');
             if (formIframe) {
                 formIframe.style.height = '500px';
-                formIframe.addEventListener('load', function() {
-                    try {
-                        console.log('Google Form 已載入');
-                    } catch (e) {}
-                });
                 const formWrapper = document.querySelector('.booking-wrapper .form-body');
                 if (formWrapper && window.ResizeObserver) {
                     const ro = new ResizeObserver(function(entries) {
@@ -2883,9 +3113,7 @@
             const fpsCode = document.getElementById('fpsCode');
             const copyFpsBtn = document.getElementById('copyFpsBtn');
 
-            // PayMe QR Code
             const PAYME_QR_URL = 'https://i.ibb.co/MD7sswSt/c32d33fa35a9d8bc8fbb194f11a7e0fa.png';
-            // 轉數快 QR Code (更新為您提供的圖片)
             const FPS_QR_URL = 'https://i.ibb.co/Kp6CT67z/78da16fab8825ece7462c4da67d78a12.png';
 
             const paymentData = {
@@ -2909,7 +3137,6 @@
                         qrCodeDisplay.innerHTML = '<img src="' + PAYME_QR_URL +
                             '" alt="PayMe QR Code" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" />';
                     } else if (data.qr === 'fps') {
-                        // 使用新圖片顯示轉數快 QR Code
                         qrCodeDisplay.innerHTML = '<img src="' + FPS_QR_URL +
                             '" alt="FPS QR Code" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" />';
                         copyArea.style.display = 'flex';
@@ -2920,7 +3147,8 @@
                         copyArea.style.display = 'flex';
                         fpsCode.textContent = data.copy;
                     } else {
-                        qrCodeDisplay.innerHTML = '<i class="fas fa-money-bill-wave" style="font-size:4rem;color:var(--primary-blue);"></i>';
+                        qrCodeDisplay.innerHTML =
+                            '<i class="fas fa-money-bill-wave" style="font-size:4rem;color:var(--accent-color);"></i>';
                     }
 
                     qrModal.classList.add('active');
@@ -3011,7 +3239,20 @@
                 }
             })();
 
-            // ---- 12. 完整多語言切換 (繁/簡/英) ----
+            // ---- 12. FAQ Toggle ----
+            window.toggleFaq = function(btn) {
+                const item = btn.closest('.faq-item');
+                const isActive = item.classList.contains('active');
+                // 關閉其他
+                document.querySelectorAll('.faq-item').forEach(function(el) {
+                    el.classList.remove('active');
+                });
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            };
+
+            // ---- 13. 多語言 ----
             const langData = {
                 'zh-hk': {
                     'brand_tag': '慢洗冷氣專家',
@@ -3022,11 +3263,13 @@
                     'nav_videos': '影片',
                     'nav_booking': '預約',
                     'nav_payment': '付款',
+                    'nav_faq': '常見問題',
                     'nav_contact': '聯絡',
                     'hero_tag': '專業師傅 · 十年經驗',
                     'hero_title1': '立夏 冷氣清洗',
                     'hero_title2': '慢慢洗 · 細心洗',
                     'hero_slogan': '慢工出細貨 只要您唔趕時間',
+                    'hero_trust': '洗後滴水保障',
                     'hero_desc': '高壓深層清洗 · 防霉殺菌處理\n用心對待每一部冷氣 還您清新涼爽有覺好訓',
                     'hero_btn1': '查詢價格',
                     'hero_btn2': '立即預約',
@@ -3119,6 +3362,19 @@
                     'fb_verified': '已驗證客戶',
                     'whatsapp_cta': '即刻 WhatsApp 查詢',
                     'whatsapp_contact': '6623 3339 · 回覆時間 30 分鐘內',
+                    'faq_sub': '常見問題',
+                    'faq_title': '您可能想知',
+                    'faq_desc': '解答您對冷氣清洗嘅疑慮',
+                    'faq_q1': '清洗一部冷氣需要幾耐時間？',
+                    'faq_a1': '一般家用分體式冷氣清洗約需 45 分鐘至 1 小時。若冷氣機滴水嚴重或需要額外處理，時間可能會稍長。師傅會先評估再同您確認。',
+                    'faq_q2': '清洗冷氣會唔會整濕間屋？',
+                    'faq_a2': '唔會！我哋會鋪設專業保護墊同防水布，並使用集水袋收集污水。清洗完成後會徹底清潔現場，確保您嘅家居整潔如初。',
+                    'faq_q3': '15天保障係點樣運作？',
+                    'faq_a3': '清洗完成後 15 日內，如果出現同一個問題（例如同一位置滴水），我哋會免費上門跟進處理，確保您用得安心。',
+                    'faq_q4': '窗口式冷氣可以清洗嗎？',
+                    'faq_a4': '可以！我哋同樣提供窗口式冷氣清洗服務。由於結構不同，清洗方式會略有調整，歡迎查詢報價。',
+                    'faq_q5': '點樣預約最快？',
+                    'faq_a5': '最快方法係點擊上面「立即預約」按鈕填寫表格，或者直接 WhatsApp 6623 3339 聯絡我哋，一般 30 分鐘內會回覆。',
                     'contact_sub': '聯繫我們',
                     'contact_title': '聯絡立夏工程',
                     'contact_desc': '隨時為您服務，歡迎查詢或預約',
@@ -3147,11 +3403,13 @@
                     'nav_videos': '影片',
                     'nav_booking': '预约',
                     'nav_payment': '付款',
+                    'nav_faq': '常见问题',
                     'nav_contact': '联络',
                     'hero_tag': '专业师傅 · 十年经验',
                     'hero_title1': '立夏 空调清洗',
                     'hero_title2': '慢慢洗 · 细心洗',
                     'hero_slogan': '慢工出细货 只要您不赶时间',
+                    'hero_trust': '洗后滴水保障',
                     'hero_desc': '高压深层清洗 · 防霉杀菌处理\n用心对待每一部空调 还您清新凉爽好睡眠',
                     'hero_btn1': '查询价格',
                     'hero_btn2': '立即预约',
@@ -3244,6 +3502,19 @@
                     'fb_verified': '已验证客户',
                     'whatsapp_cta': '立即 WhatsApp 查询',
                     'whatsapp_contact': '6623 3339 · 回复时间 30 分钟内',
+                    'faq_sub': '常见问题',
+                    'faq_title': '您可能想知道',
+                    'faq_desc': '解答您对空调清洗的疑虑',
+                    'faq_q1': '清洗一部空调需要多长时间？',
+                    'faq_a1': '一般家用分体式空调清洗约需 45 分钟至 1 小时。若空调滴水严重或需要额外处理，时间可能会稍长。师傅会先评估再跟您确认。',
+                    'faq_q2': '清洗空调会不会弄湿屋子？',
+                    'faq_a2': '不会！我们会铺设专业保护垫和防水布，并使用集水袋收集污水。清洗完成后会彻底清洁现场，确保您的家居整洁如初。',
+                    'faq_q3': '15天保障是怎么运作的？',
+                    'faq_a3': '清洗完成后 15 天内，如果出现同一个问题（例如同一位置滴水），我们会免费上门跟进处理，确保您用得安心。',
+                    'faq_q4': '窗式空调可以清洗吗？',
+                    'faq_a4': '可以！我们同样提供窗式空调清洗服务。由于结构不同，清洗方式会略有调整，欢迎查询报价。',
+                    'faq_q5': '怎么预约最快？',
+                    'faq_a5': '最快方法是点击上面「立即预约」按钮填写表格，或者直接 WhatsApp 6623 3339 联系我们，一般 30 分钟内会回复。',
                     'contact_sub': '联系我们',
                     'contact_title': '联络立夏工程',
                     'contact_desc': '随时为您服务，欢迎查询或预约',
@@ -3272,11 +3543,13 @@
                     'nav_videos': 'Videos',
                     'nav_booking': 'Booking',
                     'nav_payment': 'Payment',
+                    'nav_faq': 'FAQ',
                     'nav_contact': 'Contact',
                     'hero_tag': 'Professional · 10 Years Experience',
                     'hero_title1': 'AirconSummer AC Cleaning',
                     'hero_title2': 'Slow & Careful',
                     'hero_slogan': 'Quality over speed – take your time',
+                    'hero_trust': '15-Day Drip Guarantee',
                     'hero_desc': 'High-pressure deep cleaning · Anti-mold treatment\nWe treat every AC with care for fresh, cool air',
                     'hero_btn1': 'Check Pricing',
                     'hero_btn2': 'Book Now',
@@ -3369,6 +3642,19 @@
                     'fb_verified': 'Verified Customer',
                     'whatsapp_cta': 'WhatsApp Us Now',
                     'whatsapp_contact': '6623 3339 · Reply within 30 mins',
+                    'faq_sub': 'FAQ',
+                    'faq_title': 'You May Want to Know',
+                    'faq_desc': 'Answers to your AC cleaning questions',
+                    'faq_q1': 'How long does it take to clean one AC unit?',
+                    'faq_a1': 'A standard split AC cleaning takes about 45 minutes to 1 hour. If the unit has severe dripping issues, it may take a bit longer. Our technician will assess and confirm with you.',
+                    'faq_q2': 'Will cleaning the AC make my place wet?',
+                    'faq_a2': 'Not at all! We use professional protective mats and waterproof covers, along with water collection bags. After cleaning, we thoroughly clean the area to leave your home spotless.',
+                    'faq_q3': 'How does the 15-day guarantee work?',
+                    'faq_a3': 'If the same issue (e.g., dripping from the same spot) occurs within 15 days after cleaning, we will return to fix it free of charge – so you can have total peace of mind.',
+                    'faq_q4': 'Can you clean window-type AC units?',
+                    'faq_a4': 'Yes! We also offer window-type AC cleaning services. The process is slightly different due to the structure, so feel free to contact us for a quote.',
+                    'faq_q5': 'What\'s the fastest way to book?',
+                    'faq_a5': 'The quickest way is to fill out the "Book Now" form above, or directly WhatsApp us at 6623 3339. We usually reply within 30 minutes.',
                     'contact_sub': 'Contact Us',
                     'contact_title': 'Reach AirconSummer Engineering',
                     'contact_desc': 'Always here to help – inquiries and bookings welcome',
@@ -3403,7 +3689,7 @@
                     if (data[key] !== undefined) {
                         if (el.children.length === 0 || el.tagName === 'P' || el.tagName === 'SPAN' ||
                             el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' ||
-                            el.tagName === 'H4' || el.tagName === 'DIV') {
+                            el.tagName === 'H4' || el.tagName === 'DIV' || el.tagName === 'BUTTON') {
                             const hasIcon = el.querySelector('i');
                             const hasBr = el.querySelector('br');
                             if (hasIcon || hasBr) {
@@ -3431,10 +3717,9 @@
                 });
             });
 
-            // 預設繁體
             applyLanguage('zh-hk');
 
-            console.log('❄️ 立夏工程｜完整多語言支援 (繁/簡/英) ✅');
+            console.log('❄️ 立夏工程｜優化版完成 ✅');
 
         })();
     </script>
