@@ -477,7 +477,7 @@
         }
 
         /* ============================================================
-               5. HERO
+               5. HERO (背景圖片已替換為品牌視覺)
                ============================================================ */
         .hero {
             position: relative;
@@ -487,31 +487,38 @@
             overflow: hidden;
             isolation: isolate;
         }
+        /* 替換為品牌視覺背景圖案 — 清新波浪+冷氣icon */
         .hero::before {
             content: '';
             position: absolute;
-            top: -40%;
-            right: -15%;
+            top: -30%;
+            right: -10%;
             width: 700px;
             height: 700px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle at 70% 30%, rgba(0, 201, 167, 0.12) 0%, rgba(0, 201, 167, 0.03) 60%, transparent 80%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
             animation: pulse-glow 8s ease-in-out infinite alternate;
         }
         .hero::after {
-            content: '';
+            content: '❄️';
             position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(100, 200, 255, 0.04) 0%, transparent 70%);
-            border-radius: 50%;
+            bottom: 10%;
+            left: 5%;
+            font-size: 8rem;
+            opacity: 0.06;
             pointer-events: none;
             z-index: 0;
-            animation: pulse-glow 6s ease-in-out infinite alternate-reverse;
+            animation: float-icon 12s ease-in-out infinite alternate;
+        }
+        /* 額外裝飾元素 */
+        .hero .bg-pattern {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         @keyframes pulse-glow {
             0% {
@@ -778,7 +785,7 @@
             line-height: 1.7;
         }
 
-        /* ---- YOUNG LIVING 專區 ---- */
+        /* ---- YOUNG LIVING 專區 (多語言文案已更新) ---- */
         .yl-section {
             padding: 60px 0 50px;
             background: var(--yl-light);
@@ -2496,8 +2503,9 @@
     <!-- 手機板遮罩 -->
     <div class="nav-overlay" id="navOverlay"></div>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== HERO (背景已更新) ===== -->
     <section class="hero" id="home">
+        <div class="bg-pattern"></div>
         <div class="container">
             <div class="hero-content">
                 <div class="tag"><i class="fas fa-shield-alt" style="margin-right:6px;"></i> <span data-key="hero_tag">專業師傅 · 十年經驗</span></div>
@@ -2569,34 +2577,33 @@
     </section>
 
     <!-- ============================================================
-    YOUNG LIVING 專區 — 突顯公司與別不同 (已替換圖片)
+    YOUNG LIVING 專區 (多語言文案已更新)
     ============================================================ -->
     <section class="yl-section" id="yl">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" style="background:var(--yl-light); color:var(--yl-green);"><i class="fas fa-leaf"></i> 天然抗菌 · 與別不同</span>
+                <span class="sub" style="background:var(--yl-light); color:var(--yl-green);"><i class="fas fa-leaf"></i> <span data-key="yl_badge">天然抗菌 · 與別不同</span></span>
                 <h2><i class="fas fa-spa"></i> <span data-key="yl_title">立夏工程 獨家採用</span></h2>
                 <p data-key="yl_desc">Young Living Thieves® 家居清潔液 — 天然潔淨力量</p>
             </div>
             <div class="yl-wrapper reveal">
                 <div class="yl-image">
-                    <!-- 已替換為您提供的 Young Living Thieves 產品圖片 -->
                     <img src="https://i.ibb.co/3YQ4xfXd/cd0996a3bf043826d0e4855a30155191.png"
                          alt="Young Living Thieves Household Cleaner"
                          style="max-width:200px; width:100%; height:auto; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.12);" />
                     <div style="margin-top:8px; font-size:0.7rem; color:var(--text-light);">Young Living Thieves®</div>
                 </div>
                 <div class="yl-content">
-                    <div class="yl-badge"><i class="fas fa-certificate"></i> 天然植物配方</div>
-                    <h3><i class="fas fa-seedling"></i> Thieves® 家居清潔液</h3>
-                    <div class="yl-sub">全天然 · 無毒 · 高效抗菌</div>
+                    <div class="yl-badge"><i class="fas fa-certificate"></i> <span data-key="yl_badge_text">天然植物配方</span></div>
+                    <h3><i class="fas fa-seedling"></i> Thieves® </h3>
+                    <div class="yl-sub" data-key="yl_sub">全天然 · 無毒 · 高效抗菌</div>
                     <div class="yl-desc">
-                        <p><i class="fas fa-check-circle"></i> <strong>立夏工程</strong> 全線冷氣清洗採用 <strong>Young Living Thieves® Household Cleaner</strong>，以丁香、檸檬、肉桂、尤加利及迷迭香等天然精油製成，不含刺激性化學物。</p>
-                        <div class="highlight-box">
+                        <p data-key="yl_desc1"><i class="fas fa-check-circle"></i> <strong>立夏工程</strong> 全線冷氣清洗採用 <strong>Young Living Thieves® Household Cleaner</strong>，以丁香、檸檬、肉桂、尤加利及迷迭香等天然精油製成，不含刺激性化學物。</p>
+                        <div class="highlight-box" data-key="yl_highlight">
                             <i class="fas fa-star" style="color:var(--yl-green);"></i>
-                            與傳統清潔劑相比，Thieves® 能 <strong>有效分解頑固油污及殺滅99.9%金黃葡萄球菌</strong>，同時留下天然清香，<strong>不傷冷氣機件</strong>，更 <strong>安全呵護家人與寵物</strong>。
+                            與傳統清潔劑相比，Thieves® 能 <strong>有效分解頑固油污及霉菌</strong>，同時留下天然清香，<strong>不傷冷氣機件</strong>，更 <strong>安全呵護家人與寵物</strong>。
                         </div>
-                        <p><i class="fas fa-shield-alt"></i> 每一部冷氣清洗後，不僅潔淨如新，更散發 <strong>天然草本香氣</strong>，讓您每一次呼吸都感受到 <strong>「立夏」的細心與專業</strong>。</p>
+                        <p data-key="yl_desc2"><i class="fas fa-shield-alt"></i> 每一部冷氣清洗後，不僅潔淨如新，更散發 <strong>天然草本香氣</strong>，讓您每一次呼吸都感受到 <strong>「立夏」的細心與專業</strong>。</p>
                     </div>
                 </div>
             </div>
@@ -3334,7 +3341,7 @@
                 }
             };
 
-            // ---- 13. 多語言 ----
+            // ---- 13. 多語言 (已新增 yl 相關 key) ----
             const langData = {
                 'zh-hk': {
                     'brand_tag': '慢洗冷氣專家',
@@ -3370,8 +3377,14 @@
                     'f3_desc': '不趕工、不馬虎，每一部冷氣都細心拆洗，確保每個部件潔淨如新。',
                     'f4_title': '15天洗後保障',
                     'f4_desc': '信心之選，15天同一問題滴水保障，服務有質素。',
+                    'yl_badge': '天然抗菌 · 與別不同',
                     'yl_title': '立夏工程 獨家採用',
                     'yl_desc': 'Young Living Thieves® 家居清潔液 — 天然潔淨力量',
+                    'yl_badge_text': '天然植物配方',
+                    'yl_sub': '全天然 · 無毒 · 高效抗菌',
+                    'yl_desc1': '立夏工程 全線冷氣清洗採用 Young Living Thieves® Household Cleaner，以丁香、檸檬、肉桂、尤加利及迷迭香等天然精油製成，不含刺激性化學物。',
+                    'yl_highlight': '與傳統清潔劑相比，Thieves® 能 有效分解頑固油污及霉菌，同時留下天然清香，不傷冷氣機件，更 安全呵護家人與寵物。',
+                    'yl_desc2': '每一部冷氣清洗後，不僅潔淨如新，更散發 天然草本香氣，讓您每一次呼吸都感受到 「立夏」的細心與專業。',
                     'steps_sub': '標準流程',
                     'steps_title': '分體式冷氣清洗步驟',
                     'steps_desc': '每一個細節都按部就班，確保乾淨徹底',
@@ -3512,8 +3525,14 @@
                     'f3_desc': '不赶工、不马虎，每一部空调都细心拆洗，确保每个部件洁净如新。',
                     'f4_title': '15天洗后保障',
                     'f4_desc': '信心之选，15天同一问题滴水保障，服务有质素。',
+                    'yl_badge': '天然抗菌 · 与众不同',
                     'yl_title': '立夏工程 独家采用',
                     'yl_desc': 'Young Living Thieves® 家居清洁液 — 天然洁净力量',
+                    'yl_badge_text': '天然植物配方',
+                    'yl_sub': '全天然 · 无毒 · 高效抗菌',
+                    'yl_desc1': '立夏工程 全线空调清洗采用 Young Living Thieves® Household Cleaner，以丁香、柠檬、肉桂、尤加利及迷迭香等天然精油制成，不含刺激性化学物。',
+                    'yl_highlight': '与传统清洁剂相比，Thieves® 能 有效分解顽固油污及霉菌，同时留下天然清香，不伤空调机件，更 安全呵护家人与宠物。',
+                    'yl_desc2': '每一部空调清洗后，不仅洁净如新，更散发 天然草本香气，让您每一次呼吸都感受到 「立夏」的细心与专业。',
                     'steps_sub': '标准流程',
                     'steps_title': '分体式空调清洗步骤',
                     'steps_desc': '每一个细节都按部就班，确保干净彻底',
@@ -3654,8 +3673,14 @@
                     'f3_desc': 'No rushing, no shortcuts – every AC is carefully disassembled and cleaned to perfection.',
                     'f4_title': '15-Day Guarantee',
                     'f4_desc': 'Confidence guaranteed – 15-day protection for the same issue, ensuring quality service.',
+                    'yl_badge': 'Natural Antibacterial · Stand Out',
                     'yl_title': 'AirconSummer Exclusive',
                     'yl_desc': 'Young Living Thieves® Household Cleaner — Natural Cleaning Power',
+                    'yl_badge_text': 'Natural Plant-Based',
+                    'yl_sub': 'All-Natural · Non-Toxic · Powerful Antibacterial',
+                    'yl_desc1': 'AirconSummer uses Young Living Thieves® Household Cleaner for all AC cleaning services. Made from natural essential oils including clove, lemon, cinnamon, eucalyptus, and rosemary – free from harsh chemicals.',
+                    'yl_highlight': 'Compared to traditional cleaners, Thieves® effectively breaks down stubborn grease and mold, leaves a natural fresh scent, won\'t damage AC components, and is safe for your family and pets.',
+                    'yl_desc2': 'After cleaning, every AC unit is not only spotless but also carries a natural herbal aroma, so you can feel the care and professionalism of AirconSummer with every breath.',
                     'steps_sub': 'Standard Process',
                     'steps_title': 'Split AC Cleaning Steps',
                     'steps_desc': 'Every detail is step-by-step for a thorough clean',
