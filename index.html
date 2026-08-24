@@ -53,7 +53,7 @@
 
     <style>
         /* ============================================================
-               1. CSS VARIABLES (優化：加入品牌點綴色)
+               1. CSS VARIABLES
                ============================================================ */
         :root {
             --primary-dark: #082b3f;
@@ -76,10 +76,11 @@
             --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             --whatsapp-green: #25D366;
             --whatsapp-bubble: #dcf8c6;
-            /* 品牌點綴色：清涼湖水綠 */
             --accent-color: #00C9A7;
             --accent-light: #E0F7F2;
             --accent-gradient: linear-gradient(135deg, #00C9A7, #00A88B);
+            --yl-green: #2e7d32;
+            --yl-light: #e8f5e9;
         }
 
         /* ============================================================
@@ -114,7 +115,7 @@
         }
 
         /* ============================================================
-               3. BUTTONS (優化：新增品牌色 CTA)
+               3. BUTTONS
                ============================================================ */
         .btn {
             display: inline-flex;
@@ -153,29 +154,6 @@
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
         }
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.50);
-            backdrop-filter: blur(4px);
-        }
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: var(--white);
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
-        }
-        .btn-blue {
-            background: var(--primary-blue);
-            color: var(--white);
-            box-shadow: 0 6px 24px rgba(30, 126, 163, 0.30);
-        }
-        .btn-blue:hover {
-            background: var(--primary-dark);
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 12px 36px rgba(8, 43, 63, 0.25);
-        }
-        /* 主要 CTA 按鈕 - 品牌點綴色 */
         .btn-accent {
             background: var(--accent-gradient);
             color: var(--white);
@@ -254,7 +232,7 @@
         }
 
         /* ============================================================
-               4. HEADER (優化：手機板遮罩)
+               4. HEADER
                ============================================================ */
         .header {
             position: fixed;
@@ -481,7 +459,6 @@
             transition: var(--transition);
         }
 
-        /* 手機板選單遮罩 */
         .nav-overlay {
             display: none;
             position: fixed;
@@ -500,7 +477,7 @@
         }
 
         /* ============================================================
-               5. HERO (優化：加入15天保障徽章)
+               5. HERO
                ============================================================ */
         .hero {
             position: relative;
@@ -607,7 +584,6 @@
                 transform: translateY(-8px);
             }
         }
-        /* 15天保障徽章 */
         .trust-badge {
             display: inline-flex;
             align-items: center;
@@ -676,40 +652,6 @@
             color: rgba(255, 255, 255, 0.65);
             margin-top: 2px;
         }
-        .hero-float-icon {
-            position: absolute;
-            font-size: 3.5rem;
-            color: rgba(255, 255, 255, 0.03);
-            pointer-events: none;
-            z-index: 1;
-            animation: float-around 12s ease-in-out infinite alternate;
-        }
-        .hero-float-icon.f1 {
-            top: 12%;
-            right: 8%;
-            transform: rotate(15deg);
-            animation-delay: 0s;
-        }
-        .hero-float-icon.f2 {
-            bottom: 18%;
-            left: 6%;
-            transform: rotate(-10deg);
-            animation-delay: 3s;
-        }
-        @keyframes float-around {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-            }
-            33% {
-                transform: translate(20px, -30px) rotate(10deg) scale(1.1);
-            }
-            66% {
-                transform: translate(-20px, 20px) rotate(-10deg) scale(0.9);
-            }
-            100% {
-                transform: translate(10px, -10px) rotate(5deg) scale(1);
-            }
-        }
 
         /* ============================================================
                6. SECTION TITLES
@@ -750,7 +692,7 @@
         }
 
         /* ============================================================
-               7. FEATURES
+               7. FEATURES (加插 Young Living 專區)
                ============================================================ */
         .features {
             padding: 70px 0 60px;
@@ -836,6 +778,94 @@
             line-height: 1.7;
         }
 
+        /* ---- YOUNG LIVING 專區 ---- */
+        .yl-section {
+            padding: 60px 0 50px;
+            background: var(--yl-light);
+        }
+        .yl-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px 36px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(46, 125, 50, 0.15);
+            transition: var(--transition);
+        }
+        .yl-wrapper:hover {
+            transform: scale(1.01);
+            box-shadow: var(--shadow-lg);
+        }
+        .yl-image {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+        .yl-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 2px solid var(--yl-green);
+            transition: var(--transition);
+        }
+        .yl-image img:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-color);
+        }
+        .yl-content {
+            flex: 1;
+        }
+        .yl-content .yl-badge {
+            display: inline-block;
+            background: var(--yl-green);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .yl-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+        .yl-content h3 i {
+            color: var(--yl-green);
+            margin-right: 8px;
+        }
+        .yl-content .yl-sub {
+            font-size: 1rem;
+            color: var(--text-mid);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .yl-content .yl-desc {
+            color: var(--text-mid);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        .yl-content .yl-desc strong {
+            color: var(--yl-green);
+        }
+        .yl-content .yl-desc i {
+            color: var(--accent-color);
+            margin-right: 6px;
+        }
+        .yl-content .yl-desc .highlight-box {
+            background: var(--yl-light);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--yl-green);
+            margin: 12px 0;
+            font-weight: 500;
+        }
+
         /* ============================================================
                8. STEPS
                ============================================================ */
@@ -903,7 +933,7 @@
         }
 
         /* ============================================================
-               9. PRICING (優化：價格更突出，加入CTA按鈕)
+               9. PRICING
                ============================================================ */
         .pricing {
             padding: 70px 0 60px;
@@ -1007,7 +1037,6 @@
             width: 18px;
             text-align: center;
         }
-        /* 價格卡內的 CTA */
         .pricing-card .card-cta {
             margin-top: 18px;
         }
@@ -1644,7 +1673,7 @@
         }
 
         /* ============================================================
-               15. FAQ (新增區塊)
+               15. FAQ
                ============================================================ */
         .faq {
             padding: 60px 0 70px;
@@ -2040,6 +2069,14 @@
                 grid-template-columns: repeat(2, 1fr);
                 max-width: 680px;
             }
+            .yl-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+            .yl-image {
+                flex: 0 0 auto;
+                width: 180px;
+            }
             .header .container {
                 flex-wrap: wrap;
                 min-height: auto;
@@ -2098,7 +2135,6 @@
             .nav-toggle {
                 display: flex;
             }
-            /* 遮罩 */
             .nav-overlay.active {
                 display: block;
                 opacity: 1;
@@ -2204,6 +2240,12 @@
             }
             .faq-item .faq-answer {
                 font-size: 0.88rem;
+            }
+            .yl-wrapper {
+                padding: 24px 18px;
+            }
+            .yl-content h3 {
+                font-size: 1.5rem;
             }
         }
 
@@ -2375,6 +2417,15 @@
             .faq-item .faq-answer {
                 font-size: 0.82rem;
             }
+            .yl-wrapper {
+                padding: 18px 12px;
+            }
+            .yl-image {
+                width: 140px;
+            }
+            .yl-content h3 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -2447,8 +2498,6 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
-        <div class="hero-float-icon f1"><i class="fas fa-snowflake"></i></div>
-        <div class="hero-float-icon f2"><i class="fas fa-wind"></i></div>
         <div class="container">
             <div class="hero-content">
                 <div class="tag"><i class="fas fa-shield-alt" style="margin-right:6px;"></i> <span data-key="hero_tag">專業師傅 · 十年經驗</span></div>
@@ -2462,7 +2511,6 @@
                     <i class="fas fa-droplet"></i>
                 </div>
 
-                <!-- 15天保障徽章 -->
                 <div class="trust-badge">
                     <i class="fas fa-shield-alt"></i>
                     <span><span class="highlight-num">15</span> 天 <span data-key="hero_trust">洗後滴水保障</span></span>
@@ -2515,6 +2563,41 @@
                     <span class="icon"><i class="fas fa-shield-alt"></i></span>
                     <h3 data-key="f4_title">15天洗後保障</h3>
                     <p data-key="f4_desc">信心之選，15天同一問題滴水保障，服務有質素。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    YOUNG LIVING 專區 — 突顯公司與別不同
+    ============================================================ -->
+    <section class="yl-section" id="yl">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="sub" style="background:var(--yl-light); color:var(--yl-green);"><i class="fas fa-leaf"></i> 天然抗菌 · 與別不同</span>
+                <h2><i class="fas fa-spa"></i> <span data-key="yl_title">立夏工程 獨家採用</span></h2>
+                <p data-key="yl_desc">Young Living Thieves® 家居清潔液 — 天然潔淨力量</p>
+            </div>
+            <div class="yl-wrapper reveal">
+                <div class="yl-image">
+                    <!-- 使用乾淨的佔位圖片，實際可換成 Thieves 產品圖 -->
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%232e7d32' width='300' height='300' rx='16'/%3E%3Ctext x='38' y='160' font-size='32' fill='white' font-family='sans-serif' font-weight='bold'%3EThieves%3C/text%3E%3Ctext x='48' y='200' font-size='22' fill='%23a5d6a7' font-family='sans-serif'%3EHousehold%3C/text%3E%3Ctext x='36' y='235' font-size='20' fill='%23a5d6a7' font-family='sans-serif'%3ECleaner%3C/text%3E%3C/svg%3E"
+                         alt="Young Living Thieves Household Cleaner"
+                         style="max-width:200px; width:100%; height:auto; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.12);" />
+                    <div style="margin-top:8px; font-size:0.7rem; color:var(--text-light);">Young Living Thieves®</div>
+                </div>
+                <div class="yl-content">
+                    <div class="yl-badge"><i class="fas fa-certificate"></i> 天然植物配方</div>
+                    <h3><i class="fas fa-seedling"></i> Thieves® 家居清潔液</h3>
+                    <div class="yl-sub">全天然 · 無毒 · 高效抗菌</div>
+                    <div class="yl-desc">
+                        <p><i class="fas fa-check-circle"></i> <strong>立夏工程</strong> 全線冷氣清洗採用 <strong>Young Living Thieves® Household Cleaner</strong>，以丁香、檸檬、肉桂、尤加利及迷迭香等天然精油製成，不含刺激性化學物。</p>
+                        <div class="highlight-box">
+                            <i class="fas fa-star" style="color:var(--yl-green);"></i>
+                            與傳統清潔劑相比，Thieves® 能 <strong>有效分解頑固油污及霉菌</strong>，同時留下天然清香，<strong>不傷冷氣機件</strong>，更 <strong>安全呵護家人與寵物</strong>。
+                        </div>
+                        <p><i class="fas fa-shield-alt"></i> 每一部冷氣清洗後，不僅潔淨如新，更散發 <strong>天然草本香氣</strong>，讓您每一次呼吸都感受到 <strong>「立夏」的細心與專業</strong>。</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2875,7 +2958,7 @@
     </section>
 
     <!-- ============================================================
-    FAQ 常見問題 (新增區塊)
+    FAQ 常見問題
     ============================================================ -->
     <section class="faq" id="faq">
         <div class="container">
@@ -2997,7 +3080,7 @@
         (function() {
             'use strict';
 
-            // ---- 1. 手機導航 + 遮罩 ----
+            // ---- 1. 手機導航 ----
             const navToggle = document.getElementById('navToggle');
             const navLinks = document.getElementById('navLinks');
             const navOverlay = document.getElementById('navOverlay');
@@ -3243,7 +3326,6 @@
             window.toggleFaq = function(btn) {
                 const item = btn.closest('.faq-item');
                 const isActive = item.classList.contains('active');
-                // 關閉其他
                 document.querySelectorAll('.faq-item').forEach(function(el) {
                     el.classList.remove('active');
                 });
@@ -3288,6 +3370,8 @@
                     'f3_desc': '不趕工、不馬虎，每一部冷氣都細心拆洗，確保每個部件潔淨如新。',
                     'f4_title': '15天洗後保障',
                     'f4_desc': '信心之選，15天同一問題滴水保障，服務有質素。',
+                    'yl_title': '立夏工程 獨家採用',
+                    'yl_desc': 'Young Living Thieves® 家居清潔液 — 天然潔淨力量',
                     'steps_sub': '標準流程',
                     'steps_title': '分體式冷氣清洗步驟',
                     'steps_desc': '每一個細節都按部就班，確保乾淨徹底',
@@ -3428,6 +3512,8 @@
                     'f3_desc': '不赶工、不马虎，每一部空调都细心拆洗，确保每个部件洁净如新。',
                     'f4_title': '15天洗后保障',
                     'f4_desc': '信心之选，15天同一问题滴水保障，服务有质素。',
+                    'yl_title': '立夏工程 独家采用',
+                    'yl_desc': 'Young Living Thieves® 家居清洁液 — 天然洁净力量',
                     'steps_sub': '标准流程',
                     'steps_title': '分体式空调清洗步骤',
                     'steps_desc': '每一个细节都按部就班，确保干净彻底',
@@ -3568,6 +3654,8 @@
                     'f3_desc': 'No rushing, no shortcuts – every AC is carefully disassembled and cleaned to perfection.',
                     'f4_title': '15-Day Guarantee',
                     'f4_desc': 'Confidence guaranteed – 15-day protection for the same issue, ensuring quality service.',
+                    'yl_title': 'AirconSummer Exclusive',
+                    'yl_desc': 'Young Living Thieves® Household Cleaner — Natural Cleaning Power',
                     'steps_sub': 'Standard Process',
                     'steps_title': 'Split AC Cleaning Steps',
                     'steps_desc': 'Every detail is step-by-step for a thorough clean',
