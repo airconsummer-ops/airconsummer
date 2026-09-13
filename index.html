@@ -14,8 +14,12 @@
     <meta property="og:description" content="慢洗冷氣專家｜元朗·天水圍·屯門｜$600/部起，15天保障" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.example.com/" />
-    <!-- ⚠️ 記得換成真實圖片 URL（1200×630 px），否則分享時出唔到圖 -->
     <meta property="og:image" content="https://www.example.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="立夏工程 · 香港冷氣清洗專家" />
+    <meta property="og:site_name" content="立夏工程" />
+    <meta property="og:locale" content="zh_HK" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://www.example.com/og-image.jpg" />
 
@@ -48,6 +52,12 @@
                 { "@type": "AdministrativeArea", "name": "元朗" },
                 { "@type": "AdministrativeArea", "name": "天水圍" },
                 { "@type": "AdministrativeArea", "name": "屯門" }
+            ],
+            "sameAs": [
+                "https://www.instagram.com/你的帳號",
+                "https://www.xiaohongshu.com/user/profile/你的ID",
+                "https://www.douyin.com/user/你的ID",
+                "https://www.facebook.com/你的專頁"
             ]
         }
     </script>
@@ -1848,6 +1858,26 @@
             border-color: #07C160;
             box-shadow: 0 8px 30px rgba(7, 193, 96, 0.25);
         }
+        .social-btn.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            border-color: #dc2743;
+            box-shadow: 0 8px 30px rgba(220, 39, 67, 0.30);
+        }
+        .social-btn.xiaohongshu:hover {
+            background: #ff2442;
+            border-color: #ff2442;
+            box-shadow: 0 8px 30px rgba(255, 36, 66, 0.30);
+        }
+        .social-btn.douyin:hover {
+            background: #000000;
+            border-color: #25f4ee;
+            box-shadow: 0 8px 30px rgba(37, 244, 238, 0.25);
+        }
+        .social-btn.facebook:hover {
+            background: #1877f2;
+            border-color: #1877f2;
+            box-shadow: 0 8px 30px rgba(24, 119, 242, 0.30);
+        }
         .social-btn i {
             font-size: 1rem;
             transition: var(--transition);
@@ -1919,6 +1949,22 @@
             50% {
                 transform: scale(1.15);
             }
+        }
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-social a {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        .footer-social a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px) scale(1.15);
         }
 
         /* ============================================================
@@ -2332,6 +2378,13 @@
                 padding: 8px 16px;
                 font-size: 0.78rem;
             }
+            .contact-social {
+                gap: 6px;
+            }
+            .contact-social .social-btn {
+                padding: 6px 12px;
+                font-size: 0.72rem;
+            }
             .contact-item {
                 font-size: 0.82rem;
                 padding: 8px 10px;
@@ -2463,6 +2516,12 @@
             }
             .yl-content h3 {
                 font-size: 1.2rem;
+            }
+            .footer-social {
+                gap: 10px;
+            }
+            .footer-social a {
+                font-size: 1rem;
             }
         }
     </style>
@@ -2623,7 +2682,6 @@
             </div>
             <div class="yl-wrapper reveal">
                 <div class="yl-image">
-                    <!-- ⚠️ 建議將此圖上傳到自己 domain 或 CDN，避免第三方圖床失效 -->
                     <img src="https://i.ibb.co/3YQ4xfXd/cd0996a3bf043826d0e4855a30155191.png"
                          alt="Young Living Thieves Household Cleaner"
                          loading="lazy"
@@ -2708,7 +2766,6 @@
                 <div class="pricing-card popular reveal" style="transition-delay:0.05s;">
                     <span class="badge" data-key="badge_popular">最多選用</span>
                     <div class="name" data-key="p1_name">標準清洗</div>
-                    <!-- data-price 方便日後統一管理 -->
                     <div class="price" data-price="680">$680 <small>/ 部</small></div>
                     <div class="sub" data-key="p1_sub">高壓水槍 + 高溫消毒</div>
                     <div class="discount"><i class="fas fa-gift"></i> <span data-key="p1_discount">第二部起 每部減 $50</span></div>
@@ -2811,7 +2868,6 @@
                     </h3>
                 </div>
                 <div class="form-body">
-                    <!-- ⚠️ 加 allow-forms 確保 Google Form 可以提交 -->
                     <iframe id="googleFormIframe" src="https://docs.google.com/forms/d/e/1FAIpQLSebVhXcVfW7ovoIfnD_ZXo7k4FLBCIvJKV2E9LCqVmK6X_P2Q/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" sandbox="allow-scripts allow-same-origin allow-popups allow-forms">正在載入…</iframe>
                 </div>
             </div>
@@ -3074,6 +3130,18 @@
                         <a href="https://2358f0b4fb4f2c5d7de8c9a4.oss-cn-beijing.aliyuncs.com/UbpRl7" target="_blank" rel="noopener noreferrer" class="social-btn wechat">
                             <i class="fab fa-weixin"></i> WeChat
                         </a>
+                        <a href="https://www.instagram.com/你的帳號" target="_blank" rel="noopener noreferrer" class="social-btn instagram">
+                            <i class="fab fa-instagram"></i> <span data-key="social_instagram">Instagram</span>
+                        </a>
+                        <a href="https://www.xiaohongshu.com/user/profile/你的ID" target="_blank" rel="noopener noreferrer" class="social-btn xiaohongshu">
+                            <i class="fas fa-book-open"></i> <span data-key="social_xiaohongshu">小紅書</span>
+                        </a>
+                        <a href="https://www.douyin.com/user/你的ID" target="_blank" rel="noopener noreferrer" class="social-btn douyin">
+                            <i class="fab fa-tiktok"></i> <span data-key="social_douyin">抖音</span>
+                        </a>
+                        <a href="https://www.facebook.com/你的專頁" target="_blank" rel="noopener noreferrer" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i> <span data-key="social_facebook">Facebook</span>
+                        </a>
                     </div>
                     <div style="margin-top:4px; font-size:0.78rem; color:rgba(255,255,255,0.35);">
                         <i class="fas fa-clock" style="margin-right:4px;"></i> <span data-key="contact_reply">回覆時間：一般 30 分鐘內</span>
@@ -3105,6 +3173,13 @@
                 <span style="margin:0 8px;">|</span>
                 <span class="heart"><i class="fas fa-heart"></i></span> <span data-key="footer_heart">用心服務每一位顧客</span>
             </p>
+            <div class="footer-social">
+                <a href="https://wa.me/85266233339" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/你的帳號" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.xiaohongshu.com/user/profile/你的ID" target="_blank" rel="noopener noreferrer" aria-label="小紅書"><i class="fas fa-book-open"></i></a>
+                <a href="https://www.douyin.com/user/你的ID" target="_blank" rel="noopener noreferrer" aria-label="抖音"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/你的專頁" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
             <p style="margin-top:4px; font-size:0.7rem; opacity:0.4;">
                 <i class="fas fa-shield-alt"></i> <span data-key="footer_sub">元天屯 · 十年信譽</span>
             </p>
@@ -3242,7 +3317,6 @@
             const fpsCode = document.getElementById('fpsCode');
             const copyFpsBtn = document.getElementById('copyFpsBtn');
 
-            // ⚠️ 建議將 QR Code 圖上傳到自己 domain 或 CDN
             const PAYME_QR_URL = 'https://i.ibb.co/MD7sswSt/c32d33fa35a9d8bc8fbb194f11a7e0fa.png';
             const FPS_QR_URL = 'https://i.ibb.co/Kp6CT67z/78da16fab8825ece7462c4da67d78a12.png';
 
@@ -3315,7 +3389,6 @@
                 });
             }
 
-            // Fallback：舊瀏覽器用 execCommand（已 deprecated 但仍可用）
             function fallbackCopy(text) {
                 const range = document.createRange();
                 range.selectNode(fpsCode);
@@ -3365,10 +3438,10 @@
                 });
             }
 
-            // ---- 11. 雪花（尊重 prefers-reduced-motion） ----
+            // ---- 11. 雪花 ----
             (function createSnowflakes() {
                 if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    return; // 用戶要求減少動態，唔整雪花
+                    return;
                 }
                 var container = document.getElementById('snowfall');
                 var flakes = ['❄', '❅', '❆', '✦', '•'];
@@ -3385,7 +3458,7 @@
                 }
             })();
 
-            // ---- 12. FAQ Toggle（改用 addEventListener，唔再用 inline onclick） ----
+            // ---- 12. FAQ Toggle ----
             document.querySelectorAll('.faq-question').forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     const item = this.closest('.faq-item');
@@ -3399,7 +3472,7 @@
                 });
             });
 
-            // ---- 13. 多語言（icon 已同文字分開，唔會被覆蓋） ----
+            // ---- 13. 多語言 ----
             const langData = {
                 'zh-hk': {
                     'brand_tag': '慢洗冷氣專家',
@@ -3544,6 +3617,10 @@
                     'contact_map_addr': '📍 香港元朗朗益廣場',
                     'contact_map_note': '元朗港鐵站步行 10 分鐘',
                     'contact_map_whatsapp': '歡迎 whatsapp 預約報價',
+                    'social_instagram': 'Instagram',
+                    'social_xiaohongshu': '小紅書',
+                    'social_douyin': '抖音',
+                    'social_facebook': 'Facebook',
                     'footer_tag': '香港冷氣慢洗專家',
                     'footer_slogan': '慢慢洗 · 細心洗',
                     'footer_heart': '用心服務每一位顧客',
@@ -3692,6 +3769,10 @@
                     'contact_map_addr': '📍 香港元朗朗益广场',
                     'contact_map_note': '元朗港铁站步行 10 分钟',
                     'contact_map_whatsapp': '欢迎 whatsapp 预约报价',
+                    'social_instagram': 'Instagram',
+                    'social_xiaohongshu': '小红书',
+                    'social_douyin': '抖音',
+                    'social_facebook': 'Facebook',
                     'footer_tag': '香港空调慢洗专家',
                     'footer_slogan': '慢慢洗 · 细心洗',
                     'footer_heart': '用心服务每一位顾客',
@@ -3840,6 +3921,10 @@
                     'contact_map_addr': '📍 Hong Kong Yuen Long',
                     'contact_map_note': '10-min walk from Yuen Long MTR',
                     'contact_map_whatsapp': 'Welcome to WhatsApp for a quote',
+                    'social_instagram': 'Instagram',
+                    'social_xiaohongshu': 'Xiaohongshu',
+                    'social_douyin': 'Douyin',
+                    'social_facebook': 'Facebook',
                     'footer_tag': 'Hong Kong AC Cleaning Expert',
                     'footer_slogan': 'Slow & Careful',
                     'footer_heart': 'Serving every customer with heart',
@@ -3853,7 +3938,6 @@
                 const data = langData[lang];
                 if (!data) return;
 
-                // 只需處理有 data-key 嘅 element，icon 已同文字分開，唔會被覆蓋
                 document.querySelectorAll('[data-key]').forEach(function(el) {
                     const key = el.getAttribute('data-key');
                     if (data[key] !== undefined) {
