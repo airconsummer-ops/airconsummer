@@ -14,8 +14,10 @@
     <meta property="og:description" content="慢洗冷氣專家｜元朗·天水圍·屯門｜$600/部起，15天保障" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.example.com/" />
+    <!-- ⚠️ 記得換成真實圖片 URL（1200×630 px），否則分享時出唔到圖 -->
     <meta property="og:image" content="https://www.example.com/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://www.example.com/og-image.jpg" />
 
     <!-- ===== Schema.org ===== -->
     <script type="application/ld+json">
@@ -23,9 +25,13 @@
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "立夏工程",
+            "description": "香港元朗、天水圍、屯門冷氣清洗專家，高壓水槍+高溫消毒，15天洗後保障。",
             "telephone": "+85266233339",
+            "url": "https://www.example.com/",
+            "priceRange": "$580-$980",
             "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "朗益廣場",
                 "addressLocality": "元朗",
                 "addressRegion": "HK",
                 "addressCountry": "HK"
@@ -34,12 +40,15 @@
             "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "9.8",
+                "bestRating": "10",
+                "worstRating": "1",
                 "reviewCount": "120"
             },
-            "areaServed": {
-                "@type": "City",
-                "name": "元朗、天水圍、屯門"
-            }
+            "areaServed": [
+                { "@type": "AdministrativeArea", "name": "元朗" },
+                { "@type": "AdministrativeArea", "name": "天水圍" },
+                { "@type": "AdministrativeArea", "name": "屯門" }
+            ]
         }
     </script>
 
@@ -477,7 +486,7 @@
         }
 
         /* ============================================================
-               5. HERO (背景圖片已替換為品牌視覺)
+               5. HERO
                ============================================================ */
         .hero {
             position: relative;
@@ -487,7 +496,6 @@
             overflow: hidden;
             isolation: isolate;
         }
-        /* 替換為品牌視覺背景圖案 — 清新波浪+冷氣icon */
         .hero::before {
             content: '';
             position: absolute;
@@ -512,7 +520,6 @@
             z-index: 0;
             animation: float-icon 12s ease-in-out infinite alternate;
         }
-        /* 額外裝飾元素 */
         .hero .bg-pattern {
             position: absolute;
             inset: 0;
@@ -785,7 +792,7 @@
             line-height: 1.7;
         }
 
-        /* ---- YOUNG LIVING 專區 (多語言文案已更新) ---- */
+        /* ---- YOUNG LIVING 專區 ---- */
         .yl-section {
             padding: 60px 0 50px;
             background: var(--yl-light);
@@ -2052,7 +2059,31 @@
         }
 
         /* ============================================================
-               20. RESPONSIVE
+               20. 尊重用戶減少動態偏好
+               ============================================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .snowflake,
+            .breeze-line,
+            .hero::before,
+            .hero::after {
+                display: none !important;
+            }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* ============================================================
+               21. RESPONSIVE
                ============================================================ */
         @media (max-width: 1024px) {
             .hero .container {
@@ -2503,7 +2534,7 @@
     <!-- 手機板遮罩 -->
     <div class="nav-overlay" id="navOverlay"></div>
 
-    <!-- ===== HERO (背景已更新) ===== -->
+    <!-- ===== HERO ===== -->
     <section class="hero" id="home">
         <div class="bg-pattern"></div>
         <div class="container">
@@ -2530,15 +2561,19 @@
                     用心對待每一部冷氣 還您清新涼爽有覺好訓
                 </p>
                 <div class="hero-buttons">
-                    <a href="#pricing" class="btn btn-primary" data-key="hero_btn1"><i class="fas fa-tag"></i> 查詢價格</a>
-                    <a href="#booking" class="btn btn-accent" data-key="hero_btn2"><i class="fas fa-calendar-check"></i> 立即預約</a>
+                    <a href="#pricing" class="btn btn-primary">
+                        <i class="fas fa-tag"></i> <span data-key="hero_btn1">查詢價格</span>
+                    </a>
+                    <a href="#booking" class="btn btn-accent">
+                        <i class="fas fa-calendar-check"></i> <span data-key="hero_btn2">立即預約</span>
+                    </a>
                 </div>
             </div>
             <div class="hero-stats">
-                <div class="stat-item"><span class="number">600+</span><span class="label" data-key="stat1"><i class="fas fa-wind"></i> 冷氣清洗</span></div>
-                <div class="stat-item"><span class="number">98%</span><span class="label" data-key="stat2"><i class="fas fa-star"></i> 香港客戶滿意</span></div>
-                <div class="stat-item"><span class="number">9.8</span><span class="label" data-key="stat3"><i class="fas fa-thumbs-up"></i> 口碑評分</span></div>
-                <div class="stat-item"><span class="number">10+</span><span class="label" data-key="stat4"><i class="fas fa-calendar-alt"></i> 年經驗</span></div>
+                <div class="stat-item"><span class="number">600+</span><span class="label"><i class="fas fa-wind"></i> <span data-key="stat1">冷氣清洗</span></span></div>
+                <div class="stat-item"><span class="number">98%</span><span class="label"><i class="fas fa-star"></i> <span data-key="stat2">香港客戶滿意</span></span></div>
+                <div class="stat-item"><span class="number">9.8</span><span class="label"><i class="fas fa-thumbs-up"></i> <span data-key="stat3">口碑評分</span></span></div>
+                <div class="stat-item"><span class="number">10+</span><span class="label"><i class="fas fa-calendar-alt"></i> <span data-key="stat4">年經驗</span></span></div>
             </div>
         </div>
     </section>
@@ -2547,7 +2582,7 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" data-key="features_sub"><i class="fas fa-tools"></i> 我們的承諾</span>
+                <span class="sub"><i class="fas fa-tools"></i> <span data-key="features_sub">我們的承諾</span></span>
                 <h2><i class="fas fa-hand-sparkles"></i> <span data-key="features_title">立夏工程清洗 · 專業保證</span></h2>
                 <p data-key="features_desc">每一步都細心到位，讓冷氣煥然一新</p>
             </div>
@@ -2577,7 +2612,7 @@
     </section>
 
     <!-- ============================================================
-    YOUNG LIVING 專區 (多語言文案已更新)
+    YOUNG LIVING 專區
     ============================================================ -->
     <section class="yl-section" id="yl">
         <div class="container">
@@ -2588,8 +2623,10 @@
             </div>
             <div class="yl-wrapper reveal">
                 <div class="yl-image">
+                    <!-- ⚠️ 建議將此圖上傳到自己 domain 或 CDN，避免第三方圖床失效 -->
                     <img src="https://i.ibb.co/3YQ4xfXd/cd0996a3bf043826d0e4855a30155191.png"
                          alt="Young Living Thieves Household Cleaner"
+                         loading="lazy"
                          style="max-width:200px; width:100%; height:auto; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.12);" />
                     <div style="margin-top:8px; font-size:0.7rem; color:var(--text-light);">Young Living Thieves®</div>
                 </div>
@@ -2614,7 +2651,7 @@
     <section class="steps" id="steps">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" data-key="steps_sub"><i class="fas fa-list-ol"></i> 標準流程</span>
+                <span class="sub"><i class="fas fa-list-ol"></i> <span data-key="steps_sub">標準流程</span></span>
                 <h2><i class="fas fa-sync-alt"></i> <span data-key="steps_title">分體式冷氣清洗步驟</span></h2>
                 <p data-key="steps_desc">每一個細節都按部就班，確保乾淨徹底</p>
             </div>
@@ -2663,7 +2700,7 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" data-key="pricing_sub"><i class="fas fa-coins"></i> 透明收費</span>
+                <span class="sub"><i class="fas fa-coins"></i> <span data-key="pricing_sub">透明收費</span></span>
                 <h2><i class="fas fa-tag"></i> <span data-key="pricing_title">清洗價格</span></h2>
                 <p data-key="pricing_desc">絕無隱藏費用，明碼實價</p>
             </div>
@@ -2671,7 +2708,8 @@
                 <div class="pricing-card popular reveal" style="transition-delay:0.05s;">
                     <span class="badge" data-key="badge_popular">最多選用</span>
                     <div class="name" data-key="p1_name">標準清洗</div>
-                    <div class="price">$680 <small>/ 部</small></div>
+                    <!-- data-price 方便日後統一管理 -->
+                    <div class="price" data-price="680">$680 <small>/ 部</small></div>
                     <div class="sub" data-key="p1_sub">高壓水槍 + 高溫消毒</div>
                     <div class="discount"><i class="fas fa-gift"></i> <span data-key="p1_discount">第二部起 每部減 $50</span></div>
                     <ul class="feature-list">
@@ -2680,12 +2718,12 @@
                         <li><i class="fas fa-check-circle"></i> <span data-key="p1_f3">製冷效能檢測</span></li>
                     </ul>
                     <div class="card-cta">
-                        <a href="#booking" class="btn btn-accent"><i class="fas fa-calendar-check"></i> 立即預約</a>
+                        <a href="#booking" class="btn btn-accent"><i class="fas fa-calendar-check"></i> <span data-key="hero_btn2">立即預約</span></a>
                     </div>
                 </div>
                 <div class="pricing-card reveal" style="transition-delay:0.10s;">
                     <div class="name" data-key="p2_name">滴水清洗</div>
-                    <div class="price">$980 <small>/ 部</small></div>
+                    <div class="price" data-price="980">$980 <small>/ 部</small></div>
                     <div class="sub" data-key="p2_sub">深層清潔 + 防滴水處理</div>
                     <div class="discount"><i class="fas fa-gift"></i> <span data-key="p2_discount">第二部起 每部減 $50</span></div>
                     <ul class="feature-list">
@@ -2694,7 +2732,7 @@
                         <li><i class="fas fa-check-circle"></i> <span data-key="p2_f3">額外消毒殺菌</span></li>
                     </ul>
                     <div class="card-cta">
-                        <a href="#booking" class="btn btn-accent"><i class="fas fa-calendar-check"></i> 立即預約</a>
+                        <a href="#booking" class="btn btn-accent"><i class="fas fa-calendar-check"></i> <span data-key="hero_btn2">立即預約</span></a>
                     </div>
                 </div>
             </div>
@@ -2723,7 +2761,7 @@
     <section class="videos" id="videos">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" data-key="videos_sub"><i class="fab fa-youtube"></i> 清洗實況</span>
+                <span class="sub"><i class="fab fa-youtube"></i> <span data-key="videos_sub">清洗實況</span></span>
                 <h2><i class="fas fa-play-circle"></i> <span data-key="videos_title">睇下我哋點樣用心洗</span></h2>
                 <p data-key="videos_desc">真實記錄，每一個細節都睇得見</p>
             </div>
@@ -2760,7 +2798,7 @@
     <section class="booking" id="booking">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" data-key="booking_sub"><i class="fas fa-calendar-plus"></i> 線上預約</span>
+                <span class="sub"><i class="fas fa-calendar-plus"></i> <span data-key="booking_sub">線上預約</span></span>
                 <h2><i class="fas fa-clock"></i> <span data-key="booking_title">即時預約</span></h2>
                 <p data-key="booking_desc">填寫以下表格，我哋會盡快聯絡您確認</p>
             </div>
@@ -2773,7 +2811,8 @@
                     </h3>
                 </div>
                 <div class="form-body">
-                    <iframe id="googleFormIframe" src="https://docs.google.com/forms/d/e/1FAIpQLSebVhXcVfW7ovoIfnD_ZXo7k4FLBCIvJKV2E9LCqVmK6X_P2Q/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" sandbox="allow-scripts allow-same-origin allow-popups">正在載入…</iframe>
+                    <!-- ⚠️ 加 allow-forms 確保 Google Form 可以提交 -->
+                    <iframe id="googleFormIframe" src="https://docs.google.com/forms/d/e/1FAIpQLSebVhXcVfW7ovoIfnD_ZXo7k4FLBCIvJKV2E9LCqVmK6X_P2Q/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0" sandbox="allow-scripts allow-same-origin allow-popups allow-forms">正在載入…</iframe>
                 </div>
             </div>
             <div class="booking-note">
@@ -2787,7 +2826,7 @@
     <section class="payment" id="payment">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" data-key="payment_sub"><i class="fas fa-credit-card"></i> 方便快捷</span>
+                <span class="sub"><i class="fas fa-credit-card"></i> <span data-key="payment_sub">方便快捷</span></span>
                 <h2><i class="fas fa-wallet"></i> <span data-key="payment_title">付款方式</span></h2>
                 <p data-key="payment_desc">多種便捷支付，輕鬆過數</p>
             </div>
@@ -2826,7 +2865,7 @@
     <section class="reviews" id="reviews">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" data-key="reviews_sub"><i class="fas fa-star"></i> 客戶真實評價</span>
+                <span class="sub"><i class="fas fa-star"></i> <span data-key="reviews_sub">客戶真實評價</span></span>
                 <h2><i class="fas fa-comment-dots"></i> <span data-key="reviews_title">睇下顧客點講</span></h2>
                 <p data-key="reviews_desc">超過 600 個家庭嘅真實回饋</p>
             </div>
@@ -2852,13 +2891,13 @@
                     </div>
                 </div>
                 <div class="review-controls">
-                    <button id="reviewPrev"><i class="fas fa-chevron-left"></i></button>
+                    <button id="reviewPrev" aria-label="上一則"><i class="fas fa-chevron-left"></i></button>
                     <div class="review-dots" id="reviewDots">
-                        <button class="dot active" data-index="0"></button>
-                        <button class="dot" data-index="1"></button>
-                        <button class="dot" data-index="2"></button>
+                        <button class="dot active" data-index="0" aria-label="第 1 則"></button>
+                        <button class="dot" data-index="1" aria-label="第 2 則"></button>
+                        <button class="dot" data-index="2" aria-label="第 3 則"></button>
                     </div>
-                    <button id="reviewNext"><i class="fas fa-chevron-right"></i></button>
+                    <button id="reviewNext" aria-label="下一則"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -2870,7 +2909,7 @@
     <section class="whatsapp-feedback" id="whatsapp-feedback">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" data-key="whatsapp_sub"><i class="fab fa-whatsapp"></i> 真實 WhatsApp 好評</span>
+                <span class="sub"><i class="fab fa-whatsapp"></i> <span data-key="whatsapp_sub">真實 WhatsApp 好評</span></span>
                 <h2><i class="fas fa-comment-dots"></i> <span data-key="whatsapp_title">客戶點樣講？</span></h2>
                 <p data-key="whatsapp_desc">來自 WhatsApp 嘅真實對話回饋</p>
             </div>
@@ -2970,41 +3009,41 @@
     <section class="faq" id="faq">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" data-key="faq_sub"><i class="fas fa-question-circle"></i> 常見問題</span>
+                <span class="sub"><i class="fas fa-question-circle"></i> <span data-key="faq_sub">常見問題</span></span>
                 <h2><i class="fas fa-comments"></i> <span data-key="faq_title">您可能想知</span></h2>
                 <p data-key="faq_desc">解答您對冷氣清洗嘅疑慮</p>
             </div>
             <div class="faq-list">
                 <div class="faq-item reveal">
-                    <button class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button">
                         <span data-key="faq_q1">清洗一部冷氣需要幾耐時間？</span>
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="faq-answer" data-key="faq_a1">一般家用分體式冷氣清洗約需 45 分鐘至 1 小時。若冷氣機滴水嚴重或需要額外處理，時間可能會稍長。師傅會先評估再同您確認。</div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button">
                         <span data-key="faq_q2">清洗冷氣會唔會整濕間屋？</span>
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="faq-answer" data-key="faq_a2">唔會！我哋會鋪設專業保護墊同防水布，並使用集水袋收集污水。清洗完成後會徹底清潔現場，確保您嘅家居整潔如初。</div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button">
                         <span data-key="faq_q3">15天保障係點樣運作？</span>
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="faq-answer" data-key="faq_a3">清洗完成後 15 日內，如果出現同一個問題（例如同一位置滴水），我哋會免費上門跟進處理，確保您用得安心。</div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button">
                         <span data-key="faq_q4">窗口式冷氣可以清洗嗎？</span>
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="faq-answer" data-key="faq_a4">可以！我哋同樣提供窗口式冷氣清洗服務。由於結構不同，清洗方式會略有調整，歡迎查詢報價。</div>
                 </div>
                 <div class="faq-item reveal">
-                    <button class="faq-question" onclick="toggleFaq(this)">
+                    <button class="faq-question" type="button">
                         <span data-key="faq_q5">點樣預約最快？</span>
                         <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
                     </button>
@@ -3018,7 +3057,7 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title reveal">
-                <span class="sub" style="background:rgba(255,255,255,0.08); color:var(--accent-color);" data-key="contact_sub"><i class="fas fa-address-card"></i> 聯繫我們</span>
+                <span class="sub" style="background:rgba(255,255,255,0.08); color:var(--accent-color);"><i class="fas fa-address-card"></i> <span data-key="contact_sub">聯繫我們</span></span>
                 <h2><i class="fas fa-phone-alt"></i> <span data-key="contact_title">聯絡立夏工程</span></h2>
                 <p style="color:rgba(255,255,255,0.55);" data-key="contact_desc">隨時為您服務，歡迎查詢或預約</p>
             </div>
@@ -3203,6 +3242,7 @@
             const fpsCode = document.getElementById('fpsCode');
             const copyFpsBtn = document.getElementById('copyFpsBtn');
 
+            // ⚠️ 建議將 QR Code 圖上傳到自己 domain 或 CDN
             const PAYME_QR_URL = 'https://i.ibb.co/MD7sswSt/c32d33fa35a9d8bc8fbb194f11a7e0fa.png';
             const FPS_QR_URL = 'https://i.ibb.co/Kp6CT67z/78da16fab8825ece7462c4da67d78a12.png';
 
@@ -3261,21 +3301,34 @@
             if (copyFpsBtn) {
                 copyFpsBtn.addEventListener('click', function() {
                     const text = fpsCode.textContent;
-                    navigator.clipboard.writeText(text).then(function() {
-                        const orig = copyFpsBtn.innerHTML;
-                        copyFpsBtn.innerHTML = '<i class="fas fa-check"></i> 已複製';
-                        setTimeout(function() { copyFpsBtn.innerHTML = orig; }, 2000);
-                    }).catch(function() {
-                        const range = document.createRange();
-                        range.selectNode(fpsCode);
-                        window.getSelection().removeAllRanges();
-                        window.getSelection().addRange(range);
-                        document.execCommand('copy');
-                        const orig = copyFpsBtn.innerHTML;
-                        copyFpsBtn.innerHTML = '<i class="fas fa-check"></i> 已複製';
-                        setTimeout(function() { copyFpsBtn.innerHTML = orig; }, 2000);
-                    });
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(function() {
+                            const orig = copyFpsBtn.innerHTML;
+                            copyFpsBtn.innerHTML = '<i class="fas fa-check"></i> 已複製';
+                            setTimeout(function() { copyFpsBtn.innerHTML = orig; }, 2000);
+                        }).catch(function() {
+                            fallbackCopy(text);
+                        });
+                    } else {
+                        fallbackCopy(text);
+                    }
                 });
+            }
+
+            // Fallback：舊瀏覽器用 execCommand（已 deprecated 但仍可用）
+            function fallbackCopy(text) {
+                const range = document.createRange();
+                range.selectNode(fpsCode);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    console.warn('複製失敗，請手動複製', err);
+                }
+                const orig = copyFpsBtn.innerHTML;
+                copyFpsBtn.innerHTML = '<i class="fas fa-check"></i> 已複製';
+                setTimeout(function() { copyFpsBtn.innerHTML = orig; }, 2000);
             }
 
             // ---- 10. Reviews Carousel ----
@@ -3312,8 +3365,11 @@
                 });
             }
 
-            // ---- 11. 雪花 ----
+            // ---- 11. 雪花（尊重 prefers-reduced-motion） ----
             (function createSnowflakes() {
+                if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return; // 用戶要求減少動態，唔整雪花
+                }
                 var container = document.getElementById('snowfall');
                 var flakes = ['❄', '❅', '❆', '✦', '•'];
                 for (var i = 0; i < 25; i++) {
@@ -3329,19 +3385,21 @@
                 }
             })();
 
-            // ---- 12. FAQ Toggle ----
-            window.toggleFaq = function(btn) {
-                const item = btn.closest('.faq-item');
-                const isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(function(el) {
-                    el.classList.remove('active');
+            // ---- 12. FAQ Toggle（改用 addEventListener，唔再用 inline onclick） ----
+            document.querySelectorAll('.faq-question').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const item = this.closest('.faq-item');
+                    const isActive = item.classList.contains('active');
+                    document.querySelectorAll('.faq-item').forEach(function(el) {
+                        el.classList.remove('active');
+                    });
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
                 });
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            };
+            });
 
-            // ---- 13. 多語言 (已新增 yl 相關 key) ----
+            // ---- 13. 多語言（icon 已同文字分開，唔會被覆蓋） ----
             const langData = {
                 'zh-hk': {
                     'brand_tag': '慢洗冷氣專家',
@@ -3789,32 +3847,17 @@
                 }
             };
 
-            let currentLang = 'zh-hk';
             const langButtons = document.querySelectorAll('#langSwitcher button');
 
             function applyLanguage(lang) {
-                currentLang = lang;
                 const data = langData[lang];
                 if (!data) return;
 
+                // 只需處理有 data-key 嘅 element，icon 已同文字分開，唔會被覆蓋
                 document.querySelectorAll('[data-key]').forEach(function(el) {
                     const key = el.getAttribute('data-key');
                     if (data[key] !== undefined) {
-                        if (el.children.length === 0 || el.tagName === 'P' || el.tagName === 'SPAN' ||
-                            el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' ||
-                            el.tagName === 'H4' || el.tagName === 'DIV' || el.tagName === 'BUTTON') {
-                            const hasIcon = el.querySelector('i');
-                            const hasBr = el.querySelector('br');
-                            if (hasIcon || hasBr) {
-                                const temp = document.createElement('div');
-                                temp.innerHTML = data[key];
-                                el.innerHTML = temp.innerHTML;
-                            } else {
-                                el.textContent = data[key];
-                            }
-                        } else {
-                            el.textContent = data[key];
-                        }
+                        el.textContent = data[key];
                     }
                 });
 
